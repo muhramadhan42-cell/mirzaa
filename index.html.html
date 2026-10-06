@@ -1,0 +1,2497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#0f1e3d">
+<title>LKPD Energi Terbarukan Kota Palu — Fisika Fase E | SMAS Al-Azhar Mandiri Palu</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+    /* ====== iOS / SAFARI FIXES ====== */
+    html {
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        min-height: 100dvh;
+    }
+    input, textarea, select, button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-family: inherit;
+        font-size: 16px; /* CRITICAL: prevents iOS zoom */
+        border-radius: 10px;
+    }
+    input[type="radio"], input[type="checkbox"] {
+        -webkit-appearance: radio;
+        appearance: radio;
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        min-height: 18px;
+    }
+    select {
+        -webkit-appearance: menulist;
+        appearance: menulist;
+    }
+    button, .btn, .nav-item, .option {
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+        touch-action: manipulation;
+    }
+    /* Prevent pull-to-refresh interfering */
+    .content, .sidebar, .table-wrapper {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    :root {
+        --navy-900: #0a1428;
+        --navy-800: #0f1e3d;
+        --navy-700: #16294f;
+        --navy-600: #1e3a6b;
+        --gold-500: #d4af37;
+        --gold-400: #e6c458;
+        --gold-100: #fdf6dd;
+        --text: #0f1e3d;
+        --text-muted: #8b9bb4;
+        --bg: #f5f7fb;
+        --card: #ffffff;
+        --border: #e2e8f0;
+        --success: #1a936f;
+        --success-bg: #e0f5ee;
+        --danger: #c9184a;
+        --danger-bg: #fde4ec;
+        --warning: #d97706;
+        --warning-bg: #fef3c7;
+        --info: #1e5fbf;
+        --info-bg: #e0ebfa;
+        --shadow: 0 4px 20px rgba(10, 20, 40, 0.06);
+        --radius: 14px;
+        --sidebar-w: 280px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+        font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+        overflow-x: hidden;
+    }
+    .app {
+        display: flex;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        min-height: 100dvh;
+        padding-top: env(safe-area-inset-top, 0);
+        padding-left: env(safe-area-inset-left, 0);
+        padding-right: env(safe-area-inset-right, 0);
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+    /* ====== SIDEBAR ====== */
+    .sidebar {
+        width: var(--sidebar-w);
+        background: linear-gradient(180deg, var(--navy-800) 0%, var(--navy-900) 100%);
+        color: white;
+        padding: 24px 16px;
+        padding-bottom: calc(24px + env(safe-area-inset-bottom, 0));
+        position: fixed;
+        top: 0; left: 0;
+        height: 100vh;
+        height: -webkit-fill-available;
+        height: 100dvh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        will-change: transform;
+    }
+    .sidebar-header { padding: 0 8px 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+    .brand-logo { width: 46px; height: 46px; background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); border-radius: 12px; display: grid; place-items: center; font-size: 24px; flex-shrink: 0; }
+    .brand-text h1 { font-size: 14px; font-weight: 700; color: white; line-height: 1.3; }
+    .brand-text p { font-size: 10px; color: var(--gold-400); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+    .nav-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.8px; color: var(--gold-400); padding: 12px 12px 8px; font-weight: 700; }
+    .nav-menu { list-style: none; }
+    .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; cursor: pointer; margin-bottom: 6px; font-size: 14px; font-weight: 500; transition: all 0.2s ease; border: 1px solid transparent; position: relative; color: rgba(255,255,255,0.85); min-height: 48px; }
+    .nav-item:hover { background: rgba(212, 175, 55, 0.08); color: white; }
+    .nav-item.active { background: rgba(212, 175, 55, 0.12); border-color: rgba(212, 175, 55, 0.35); color: white; font-weight: 600; }
+    .nav-item.active::before { content: ''; position: absolute; left: -16px; top: 50%; transform: translateY(-50%); width: 4px; height: 24px; background: var(--gold-500); border-radius: 0 4px 4px 0; }
+    .nav-icon { width: 34px; height: 34px; background: rgba(212, 175, 55, 0.1); border-radius: 9px; display: grid; place-items: center; font-size: 16px; flex-shrink: 0; }
+    .nav-item.active .nav-icon { background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); color: var(--navy-900); }
+    .sidebar-footer { margin-top: 24px; padding: 16px; background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 12px; font-size: 11px; text-align: center; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .sidebar-footer strong { color: var(--gold-400); }
+    /* ====== MAIN ====== */
+    .main { flex: 1; margin-left: var(--sidebar-w); min-width: 0; width: 100%; }
+    .topbar { background: white; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); position: -webkit-sticky; position: sticky; top: 0; z-index: 100; gap: 12px; flex-wrap: wrap; }
+    .hamburger { display: none; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--navy-600); padding: 8px 12px; border-radius: 8px; min-width: 44px; min-height: 44px; }
+    .breadcrumb { font-size: 13px; color: var(--text-muted); }
+    .breadcrumb strong { color: var(--navy-600); }
+    .user-badge { display: flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; background: var(--gold-100); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--navy-700); cursor: pointer; }
+    .user-avatar { width: 32px; height: 32px; background: linear-gradient(135deg, var(--navy-600), var(--gold-500)); border-radius: 50%; display: grid; place-items: center; color: white; font-size: 13px; font-weight: 700; }
+    .content { padding: 32px; max-width: 1100px; margin: 0 auto; }
+    .page { display: none; animation: fadeIn 0.4s ease; }
+    .page.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .page-header { margin-bottom: 28px; }
+    .page-header .eyebrow { display: inline-block; padding: 5px 14px; background: linear-gradient(135deg, var(--gold-100), #fbeaa8); color: var(--navy-700); border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+    .page-header h2 { font-family: 'Playfair Display', 'Georgia', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy-800); margin-bottom: 8px; line-height: 1.25; }
+    .page-header p { color: var(--text-muted); font-size: 15px; max-width: 760px; }
+    /* ====== CARD ====== */
+    .card { background: var(--card); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 24px; width: 100%; }
+    .card-title { display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--navy-800); flex-wrap: wrap; }
+    .card-title-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--navy-600), var(--navy-700)); color: var(--gold-400); border-radius: 10px; display: grid; place-items: center; font-size: 17px; flex-shrink: 0; }
+    /* ====== HERO ====== */
+    .hero { background: linear-gradient(135deg, var(--navy-700) 0%, var(--navy-900) 100%); border-radius: 18px; padding: 48px 40px; color: white; margin-bottom: 24px; position: relative; overflow: hidden; }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-logo { width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); border-radius: 20px; display: grid; place-items: center; font-size: 40px; margin-bottom: 20px; }
+    .hero-badge { display: inline-block; padding: 6px 16px; background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 100px; color: var(--gold-400); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .hero h1 { font-family: 'Playfair Display', 'Georgia', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.2; margin-bottom: 12px; color: #fff; }
+    @supports (-webkit-background-clip: text) {
+        .hero h1 { background: linear-gradient(135deg, #ffffff 0%, var(--gold-400) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    }
+    .hero p { font-size: 15px; color: rgba(255,255,255,0.85); max-width: 620px; line-height: 1.7; margin-bottom: 24px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+    .hero-meta-item { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 100px; font-size: 12.5px; color: white; }
+    .hero-meta-item .dot { width: 6px; height: 6px; background: var(--gold-400); border-radius: 50%; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    /* ====== INFO GRID ====== */
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 20px; }
+    .info-card { padding: 20px; background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; }
+    .info-card .emoji { font-size: 30px; margin-bottom: 10px; display: block; }
+    .info-card h4 { color: var(--navy-800); font-size: 15px; margin-bottom: 6px; }
+    .info-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    /* ====== ARTIKEL ====== */
+    .article p { margin-bottom: 14px; color: #334155; font-size: 15px; text-align: justify; }
+    .article .highlight-box { background: linear-gradient(135deg, var(--gold-100), #fbeaa8); border-left: 4px solid var(--gold-500); padding: 16px 20px; border-radius: 10px; margin: 20px 0; font-size: 14px; color: var(--navy-700); line-height: 1.7; }
+    /* ====== DATA CARD ====== */
+    .data-card { padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 16px; background: #f8fafc; }
+    .data-card.surya { background: linear-gradient(135deg, #fffdf6, #fff9e8); border-color: #f0d878; }
+    .data-card.angin { background: linear-gradient(135deg, #f7faff, #e0ebfa); border-color: #c7dbf5; }
+    .data-card.air { background: linear-gradient(135deg, #f5fdfa, #e0f5ee); border-color: #a8ddc9; }
+    .data-card.biomassa { background: linear-gradient(135deg, #fff5f5, #fde4ec); border-color: #f4b8c8; }
+    .data-card.geothermal { background: linear-gradient(135deg, #fef5ff, #f5e0ff); border-color: #d0a8e0; }
+    .data-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--border); }
+    .data-card-header .emoji { font-size: 26px; width: 46px; height: 46px; background: white; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0; }
+    .data-card-header h4 { color: var(--navy-800); font-size: 15px; }
+    .data-list { list-style: none; padding: 0; }
+    .data-list li { padding: 6px 0; font-size: 13.5px; color: #334155; line-height: 1.6; display: flex; align-items: flex-start; gap: 8px; }
+    .data-list li::before { content: '▸'; color: var(--gold-500); font-weight: 700; flex-shrink: 0; }
+    /* ====== RATING ====== */
+    .rating-buttons { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; }
+    .rating-btn { width: 44px; height: 44px; border-radius: 8px; border: 1.5px solid var(--border); background: white; color: var(--navy-600); font-weight: 700; font-size: 15px; cursor: pointer; font-family: inherit; transition: all 0.2s ease; min-width: 44px; min-height: 44px; }
+    .rating-btn:hover { border-color: var(--navy-600); background: var(--info-bg); }
+    .rating-btn.selected { background: linear-gradient(135deg, var(--navy-600), var(--navy-700)); color: var(--gold-400); border-color: var(--navy-600); box-shadow: 0 4px 12px rgba(22, 41, 79, 0.3); }
+    /* ====== QUIZ ====== */
+    .quiz-item { padding: 22px; background: #f8fafc; border-radius: 12px; margin-bottom: 18px; border: 1px solid var(--border); }
+    .quiz-question { font-weight: 600; margin-bottom: 16px; font-size: 15px; color: var(--text); display: flex; gap: 12px; line-height: 1.6; }
+    .q-number { flex-shrink: 0; width: 28px; height: 28px; background: linear-gradient(135deg, var(--navy-600), var(--navy-700)); color: var(--gold-400); border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 700; }
+    .q-badge { display: inline-block; padding: 2px 9px; background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); color: var(--navy-900); border-radius: 100px; font-size: 9.5px; font-weight: 700; text-transform: uppercase; margin-left: 6px; }
+    .q-badge.numerasi { background: linear-gradient(135deg, #7ba7d9, #1e3a6b); color: white; }
+    .quiz-options { display: flex; flex-direction: column; gap: 9px; }
+    .option { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: white; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 15px; line-height: 1.55; min-height: 44px; }
+    .option input { cursor: pointer; accent-color: var(--navy-600); margin-top: 3px; flex-shrink: 0; }
+    .option.selected { border-color: var(--navy-600); background: var(--info-bg); font-weight: 500; }
+    .option.correct { border-color: var(--success); background: var(--success-bg); }
+    .option.wrong { border-color: var(--danger); background: var(--danger-bg); }
+    .option-label { display: inline-grid; place-items: center; width: 24px; height: 24px; background: var(--navy-600); color: white; border-radius: 6px; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .option.correct .option-label { background: var(--success); }
+    .option.wrong .option-label { background: var(--danger); }
+    .feedback { margin-top: 12px; padding: 12px 16px; border-radius: 10px; font-size: 13.5px; display: none; line-height: 1.6; }
+    .feedback.show { display: block; }
+    .feedback.correct { background: var(--success-bg); color: #0d5a44; border-left: 3px solid var(--success); }
+    .feedback.wrong { background: var(--danger-bg); color: #7a0d29; border-left: 3px solid var(--danger); }
+    /* ====== BUTTONS ====== */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 10px; border: none; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; min-height: 44px; }
+    .btn-primary { background: linear-gradient(135deg, var(--navy-600), var(--navy-800)); color: white; box-shadow: 0 4px 14px rgba(22, 41, 79, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-gold { background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); color: var(--navy-900); box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35); }
+    .btn-gold:hover { transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--navy-700); border: 1.5px solid var(--navy-600); }
+    .btn-outline-light { background: rgba(255,255,255,0.08); color: white; border: 1.5px solid rgba(212, 175, 55, 0.5); }
+    .btn-pdf { background: linear-gradient(135deg, #c9184a, #9d1239); color: white; box-shadow: 0 4px 14px rgba(201, 24, 74, 0.35); }
+    .btn-pdf:hover { transform: translateY(-2px); }
+    .btn-success { background: linear-gradient(135deg, #1a936f, #0d6b4f); color: white; box-shadow: 0 4px 14px rgba(26, 147, 111, 0.35); }
+    .btn-success:hover { transform: translateY(-2px); }
+    .btn-sm { padding: 8px 16px; font-size: 13px; min-height: 38px; }
+    .btn-lg { padding: 16px 32px; font-size: 16px; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    /* ====== INPUT & TEXTAREA ====== */
+    textarea, input[type="text"], input[type="number"] {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 16px;
+        color: var(--text);
+        background: #fafbfc;
+        line-height: 1.75;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    textarea {
+        min-height: 120px;
+        resize: none;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        -webkit-user-select: text;
+        user-select: text;
+    }
+    textarea:focus, input[type="text"]:focus, input[type="number"]:focus {
+        outline: none;
+        border-color: var(--gold-500);
+        background: white;
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+    }
+    .jawaban-text { display: block; padding: 14px 16px; background: #fafbfc; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; line-height: 1.75; color: var(--text); white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; min-height: 100px; }
+    .jawaban-text.empty { color: var(--text-muted); font-style: italic; }
+    /* ====== KELOMPOK ====== */
+    .kelompok-form { background: linear-gradient(135deg, #fdf6dd, #fbeaa8); border: 2px solid var(--gold-500); border-radius: 14px; padding: 24px; margin-bottom: 20px; margin-top: 12px; position: relative; }
+    .kelompok-form::before { content: '👥 DATA KELOMPOK'; position: absolute; top: -12px; left: 24px; background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); color: var(--navy-900); padding: 4px 14px; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; }
+    .kelompok-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 8px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 12px; font-weight: 700; color: var(--navy-800); text-transform: uppercase; letter-spacing: 0.8px; }
+    .form-group input[type="text"] { background: white; border: 1.5px solid rgba(212, 175, 55, 0.4); padding: 12px 14px; font-weight: 500; }
+    .form-group input[readonly] { background: #f1f5f9; color: var(--text-muted); cursor: not-allowed; }
+    .anggota-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-top: 8px; }
+    .anggota-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: white; border: 1.5px solid rgba(212, 175, 55, 0.4); border-radius: 10px; }
+    .anggota-num { width: 28px; height: 28px; background: linear-gradient(135deg, var(--navy-600), var(--navy-700)); color: var(--gold-400); border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+    .anggota-item input { border: none !important; background: transparent !important; padding: 8px 0 !important; box-shadow: none !important; flex: 1; font-size: 16px; min-height: 36px; }
+    .anggota-remove { background: none; border: none; color: var(--danger); font-size: 18px; cursor: pointer; padding: 8px; border-radius: 6px; flex-shrink: 0; min-width: 40px; min-height: 40px; display: flex; align-items: center; justify-content: center; }
+    /* ====== LKPD HEADER ====== */
+    .lkpd-header { background: linear-gradient(135deg, var(--navy-700), var(--navy-900)); color: white; padding: 26px 28px; border-radius: 14px; margin-bottom: 20px; }
+    .lkpd-header h3 { font-family: 'Playfair Display', 'Georgia', serif; font-size: 22px; color: var(--gold-400); margin-bottom: 6px; }
+    .lkpd-header p { font-size: 14px; color: rgba(255,255,255,0.85); }
+    .lkpd-section { margin-bottom: 24px; padding: 20px; background: #f8fafc; border-left: 4px solid var(--gold-500); border-radius: 10px; }
+    .lkpd-section h4 { color: var(--navy-800); font-size: 15px; margin-bottom: 10px; }
+    .lkpd-section .instruction { font-size: 13.5px; color: #334155; margin-bottom: 14px; line-height: 1.7; }
+    /* ====== REFLEKSI ====== */
+    .reflection-item { padding: 18px; background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 14px; }
+    .reflection-q { font-weight: 600; font-size: 14px; color: var(--navy-800); margin-bottom: 10px; display: flex; gap: 10px; line-height: 1.55; }
+    .reflection-num { flex-shrink: 0; width: 24px; height: 24px; background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); color: var(--navy-900); border-radius: 6px; display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+    /* ====== TOOLBAR ====== */
+    .save-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 24px; border-radius: 14px; margin: 24px 0; flex-wrap: wrap; box-shadow: 0 6px 20px rgba(10, 20, 40, 0.1); }
+    .save-toolbar.lkpd { background: linear-gradient(135deg, #f0f7ff, #e0ebfa); border: 2px solid var(--navy-600); }
+    .save-toolbar.kuis { background: linear-gradient(135deg, #fdf6dd, #fbeaa8); border: 2px solid var(--gold-500); }
+    .save-toolbar-info { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 260px; }
+    .save-toolbar-icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0; }
+    .save-toolbar.lkpd .save-toolbar-icon { background: linear-gradient(135deg, var(--navy-600), var(--navy-800)); color: var(--gold-400); }
+    .save-toolbar.kuis .save-toolbar-icon { background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); color: var(--navy-900); }
+    .save-toolbar-text h5 { color: var(--navy-800); font-size: 15px; margin-bottom: 3px; font-weight: 700; }
+    .save-toolbar-text p { font-size: 12.5px; color: var(--text-muted); margin: 0; line-height: 1.4; }
+    /* ====== LOGIN ====== */
+    .login-card { max-width: 520px; margin: 40px auto; background: white; border-radius: 18px; padding: 40px; box-shadow: 0 20px 60px rgba(10, 20, 40, 0.15); border: 1px solid var(--border); }
+    .login-icon { width: 72px; height: 72px; background: linear-gradient(135deg, var(--navy-600), var(--navy-800)); color: var(--gold-400); border-radius: 18px; display: grid; place-items: center; font-size: 34px; margin: 0 auto 20px; }
+    .login-card h2 { text-align: center; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy-800); margin-bottom: 8px; }
+    .login-card .login-subtitle { text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 28px; }
+    .login-card .form-group { margin-bottom: 16px; }
+    .login-card label { display: block; font-size: 12px; font-weight: 700; color: var(--navy-800); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .login-card input { width: 100%; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 16px; background: #fafbfc; }
+    .login-error { background: var(--danger-bg); color: #7a0d29; padding: 12px 16px; border-radius: 10px; border-left: 3px solid var(--danger); font-size: 13px; margin-bottom: 16px; display: none; }
+    .login-error.show { display: block; }
+    .login-card .btn { width: 100%; margin-top: 8px; }
+    /* ====== LOCKED ====== */
+    .locked-banner { background: linear-gradient(135deg, #fde4ec, #fbd5d5); border: 2px solid var(--danger); border-radius: 14px; padding: 24px; margin-bottom: 24px; display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+    .locked-banner-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--danger), #9d1239); border-radius: 12px; display: grid; place-items: center; font-size: 24px; color: white; flex-shrink: 0; }
+    .locked-banner-content h3 { color: #7a0d29; font-size: 17px; margin-bottom: 6px; font-weight: 700; }
+    .locked-banner-content p { color: #9d1239; font-size: 14px; line-height: 1.65; }
+    /* ====== EXPORT PANEL ====== */
+    .export-panel { background: linear-gradient(135deg, var(--navy-800), var(--navy-900)); border-radius: 20px; padding: 40px 32px; margin-top: 36px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(10, 20, 40, 0.3); border: 2px solid rgba(212, 175, 55, 0.3); }
+    .export-panel-content { position: relative; z-index: 2; }
+    .export-panel-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold-400), var(--gold-500)); border-radius: 22px; display: inline-grid; place-items: center; font-size: 42px; margin-bottom: 20px; }
+    .export-panel h3 { font-family: 'Playfair Display', 'Georgia', serif; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--gold-400); margin-bottom: 12px; }
+    .export-panel p.export-desc { color: rgba(255,255,255,0.85); font-size: 15px; max-width: 640px; margin: 0 auto 28px; line-height: 1.7; }
+    .export-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .export-buttons .btn { min-width: 240px; font-size: 15px; padding: 18px 32px; }
+    .export-status { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; background: rgba(255,255,255,0.06); border: 1px dashed rgba(212, 175, 55, 0.4); border-radius: 12px; font-size: 13px; color: rgba(255,255,255,0.85); max-width: 720px; text-align: left; line-height: 1.6; }
+    .export-status strong { color: var(--gold-400); }
+    /* ====== BADGE ====== */
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; }
+    .badge-success { background: var(--success-bg); color: #0d5a44; }
+    .badge-warning { background: var(--warning-bg); color: #92400e; }
+    .badge-danger { background: var(--danger-bg); color: #7a0d29; }
+    /* ====== INFO BOX ====== */
+    .info-box { display: flex; gap: 12px; padding: 14px 18px; border-radius: 10px; margin: 14px 0; font-size: 13.5px; line-height: 1.65; }
+    .info-box.tip { background: var(--gold-100); border-left: 3px solid var(--gold-500); color: var(--navy-700); }
+    .info-box.note { background: var(--info-bg); border-left: 3px solid var(--info); color: var(--navy-700); }
+    .info-box.danger { background: var(--danger-bg); border-left: 3px solid var(--danger); color: #7a0d29; }
+    .info-box strong { color: var(--navy-800); }
+    /* ====== TABEL ====== */
+    .table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0; border-radius: 8px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; background: white; border-radius: 8px; overflow: hidden; min-width: 600px; }
+    .data-table th { background: var(--navy-700); color: white; padding: 12px 14px; text-align: left; font-weight: 600; font-size: 12.5px; word-wrap: break-word; }
+    .data-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: #334155; vertical-align: middle; word-wrap: break-word; line-height: 1.6; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: #f8fafc; }
+    .data-table .kriteria-cell { font-weight: 600; color: var(--navy-800); }
+    /* Progress */
+    .akt-progress { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: linear-gradient(135deg, #f0f7ff, #e0ebfa); border: 1px solid var(--navy-600); border-radius: 10px; font-size: 13px; color: var(--navy-700); margin-top: 14px; flex-wrap: wrap; }
+    .akt-progress strong { color: var(--navy-800); font-size: 15px; }
+    .akt-progress .progress-mini { flex: 1; min-width: 120px; height: 8px; background: white; border-radius: 100px; overflow: hidden; border: 1px solid rgba(30, 58, 107, 0.15); }
+    .akt-progress .progress-mini-fill { height: 100%; background: linear-gradient(90deg, var(--navy-600), var(--gold-500)); border-radius: 100px; transition: width 0.4s ease; width: 0%; }
+    /* Overlay - explicit positions for Safari */
+    .overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 20, 40, 0.5); z-index: 999; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+    .overlay.show { display: block; }
+    /* ====== PDF MODE ====== */
+    .pdf-mode { background: white !important; padding: 15px !important; color: #0f1e3d !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+    .pdf-mode * { box-sizing: border-box !important; max-width: 100% !important; }
+    .pdf-mode .card { box-shadow: none !important; border: 1px solid #cbd5e0 !important; margin-bottom: 12px !important; padding: 18px !important; page-break-inside: avoid !important; break-inside: avoid !important; }
+    .pdf-mode .btn-group, .pdf-mode .btn, .pdf-mode .export-panel, .pdf-mode .save-toolbar, .pdf-mode .anggota-remove, .pdf-mode .rating-btn { display: none !important; }
+    .pdf-mode textarea { display: none !important; }
+    .pdf-mode .jawaban-text { display: block !important; }
+    .pdf-mode .table-wrapper { overflow: visible !important; width: 100% !important; }
+    .pdf-mode .data-table { width: 100% !important; table-layout: fixed !important; font-size: 11.5px !important; min-width: unset !important; }
+    .pdf-mode .data-table th { background: #16294f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 8px 6px !important; font-size: 11px !important; }
+    .pdf-mode .data-table td { padding: 7px 6px !important; font-size: 11px !important; }
+    .pdf-mode .reflection-item { page-break-inside: avoid !important; padding: 12px !important; }
+    .pdf-mode .quiz-item { page-break-inside: avoid !important; }
+    .pdf-mode h1, .pdf-mode h2, .pdf-mode h3, .pdf-mode h4, .pdf-mode h5 { page-break-after: avoid !important; }
+    /* PDF Cover */
+    .pdf-cover { display: none; text-align: center; padding: 40px 20px; border-bottom: 3px double #d4af37; margin-bottom: 24px; }
+    .pdf-mode .pdf-cover { display: block; }
+    .pdf-cover-logo { width: 80px; height: 80px; background: linear-gradient(135deg, #e6c458, #d4af37); border-radius: 20px; display: inline-grid; place-items: center; font-size: 42px; margin-bottom: 16px; }
+    .pdf-cover h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: #0f1e3d; margin-bottom: 8px; }
+    .pdf-cover h2 { font-size: 16px; color: #1e3a6b; font-weight: 500; margin-bottom: 20px; }
+    .pdf-cover-meta { display: inline-block; padding: 12px 24px; background: #fdf6dd; border: 1px solid #d4af37; border-radius: 10px; font-size: 13px; color: #16294f; line-height: 1.8; text-align: left; }
+    .pdf-cover-meta strong { display: inline-block; min-width: 90px; color: #0f1e3d; }
+    .pdf-footer { display: none; text-align: center; padding: 20px; margin-top: 30px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #8b9bb4; }
+    .pdf-mode .pdf-footer { display: block; }
+    .pdf-section-title { display: none; text-align: center; margin: 30px 0 20px; padding: 18px; background: linear-gradient(135deg, #16294f, #0a1428); color: #e6c458; border-radius: 12px; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; page-break-before: always; }
+    .pdf-section-title.first { page-break-before: auto; }
+    .pdf-mode .pdf-section-title { display: block; }
+    /* Rekap PDF */
+    #rekapNilaiPDF { display: none; }
+    .rekap-pdf-content { background: white; padding: 30px; font-family: 'Inter', sans-serif; color: #0f1e3d; }
+    .rekap-pdf-header { text-align: center; border-bottom: 3px double #d4af37; padding-bottom: 20px; margin-bottom: 24px; }
+    .rekap-pdf-header .logo { width: 70px; height: 70px; background: linear-gradient(135deg, #e6c458, #d4af37); border-radius: 16px; display: inline-grid; place-items: center; font-size: 34px; margin-bottom: 12px; }
+    .rekap-pdf-header h1 { font-family: 'Playfair Display', serif; font-size: 22px; color: #0f1e3d; margin-bottom: 4px; }
+    .rekap-pdf-header h2 { font-size: 16px; color: #1e3a6b; margin-bottom: 12px; font-weight: 500; }
+    .rekap-pdf-header p { font-size: 12.5px; color: #64748b; margin-bottom: 4px; }
+    .rekap-pdf-info { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; background: #fdf6dd; border: 1px solid #d4af37; border-radius: 10px; padding: 16px 20px; margin-bottom: 22px; font-size: 13px; }
+    .rekap-pdf-info .item strong { display: inline-block; min-width: 130px; color: #16294f; }
+    .rekap-pdf-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; background: white; table-layout: fixed; }
+    .rekap-pdf-table th { background: #16294f; color: white; padding: 10px 8px; text-align: left; font-weight: 600; font-size: 11.5px; border: 1px solid #16294f; }
+    .rekap-pdf-table td { padding: 9px 8px; border: 1px solid #cbd5e0; color: #334155; vertical-align: top; }
+    .rekap-pdf-table tr:nth-child(even) td { background: #f8fafc; }
+    .rekap-pdf-table .status-badge { display: inline-block; padding: 2px 8px; border-radius: 100px; font-size: 10.5px; font-weight: 700; }
+    .rekap-pdf-table .status-lulus { background: #d1f0e0; color: #166534; }
+    .rekap-pdf-table .status-remedial { background: #fbd5d5; color: #991b1b; }
+    .rekap-pdf-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+    .rekap-pdf-stat { background: linear-gradient(135deg, #16294f, #0a1428); color: white; padding: 16px; border-radius: 10px; text-align: center; }
+    .rekap-pdf-stat .value { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #e6c458; margin-bottom: 4px; }
+    .rekap-pdf-stat .label { font-size: 10.5px; color: rgba(255,255,255,0.8); text-transform: uppercase; }
+    .rekap-pdf-footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; font-size: 11px; color: #8b9bb4; flex-wrap: wrap; gap: 8px; }
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 900px) {
+        .sidebar { transform: translateX(-100%); }
+        .sidebar.open { transform: translateX(0); }
+        .main { margin-left: 0; }
+        .hamburger { display: block; }
+        .content { padding: 20px 16px; }
+        .card { padding: 20px; }
+        .topbar { padding: 12px 16px; }
+        .user-badge span { display: none; }
+        .export-buttons .btn { width: 100%; min-width: unset; }
+        .hero { padding: 32px 24px; }
+        .export-panel { padding: 28px 20px; }
+        .save-toolbar { flex-direction: column; align-items: stretch; }
+        .save-toolbar .btn { flex: 1; }
+        .rekap-pdf-info { grid-template-columns: 1fr; }
+        .rekap-pdf-stats { grid-template-columns: repeat(2, 1fr); }
+        .rating-btn { width: 48px; height: 48px; font-size: 16px; }
+    }
+    @media (max-width: 480px) {
+        .btn { width: 100%; }
+        .btn-group { flex-direction: column; }
+        .btn-group .btn { width: 100%; }
+        .login-card { padding: 24px; margin: 16px auto; }
+        .hero { padding: 24px 18px; }
+        .hero-logo { width: 60px; height: 60px; font-size: 30px; }
+        .card { padding: 16px; }
+        .data-table { font-size: 12.5px; min-width: 500px; }
+        .rekap-pdf-stats { grid-template-columns: 1fr; }
+        .rekap-pdf-footer { flex-direction: column; text-align: center; }
+    }
+    @media print {
+        body { background: white; }
+        .sidebar, .topbar, .btn-group, .btn, .export-panel, .save-toolbar, .hamburger { display: none !important; }
+        .main { margin-left: 0 !important; }
+        .content { padding: 0 !important; max-width: 100% !important; }
+        .page { display: none !important; }
+        .page.active { display: block !important; }
+    }
+    /* Desktop override for smaller inputs */
+    @media (min-width: 901px) {
+        input[type="text"], input[type="number"], textarea { font-size: 14px; }
+        .login-card input { font-size: 14px; }
+        .anggota-item input { font-size: 14px; }
+    }
+</style>
+</head>
+<body>
+
+<script>
+window.LKPD_CONFIG = {
+    namaSekolah:  'SMAS Al-Azhar Mandiri Palu',
+    namaGuru:     'Muh Miswar Ramadhan, S.Pd., Gr.',
+    nip:          '-',
+    mataPelajaran: 'Fisika',
+    kelas:        'X',
+    fase:         'E',
+    tahunAjaran:  '2025/2026',
+    alokasiWaktu: '2 × 45 menit',
+    namaLKPD:     'Energi Terbarukan Kota Palu',
+    kkm:          75,
+    maxAnggota:   10
+};
+
+window.ENERGY_TYPES = [
+    { id: 'surya', emoji: '☀️', label: 'Energi Surya' },
+    { id: 'angin', emoji: '💨', label: 'Energi Angin' },
+    { id: 'air', emoji: '💧', label: 'Energi Air' },
+    { id: 'biomassa', emoji: '🗑️', label: 'Biomassa (Sampah)' },
+    { id: 'geothermal', emoji: '🌋', label: 'Panas Bumi' }
+];
+
+window.KRITERIA = [
+    { id: 'sumber', label: 'Kesesuaian Sumber Daya' },
+    { id: 'efisiensi', label: 'Efisiensi Teknis' },
+    { id: 'ekonomi', label: 'Kelayakan Ekonomi' },
+    { id: 'lingkungan', label: 'Dampak Lingkungan' },
+    { id: 'keberlanjutan', label: 'Keberlanjutan' }
+];
+</script>
+
+<div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <div class="brand-logo">⚡</div>
+                <div class="brand-text">
+                    <h1>SMAS Al-Azhar Mandiri Palu</h1>
+                    <p>Energi Terbarukan Palu</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-label">Menu Pembelajaran</div>
+        <ul class="nav-menu">
+            <li class="nav-item active" data-page="home"><div class="nav-icon">🏠</div><span>Halaman Depan</span></li>
+            <li class="nav-item" data-page="materi"><div class="nav-icon">📘</div><span>Materi</span></li>
+            <li class="nav-item" data-page="referensi"><div class="nav-icon">🔗</div><span>Data Kota Palu</span></li>
+            <li class="nav-item" data-page="lkpd"><div class="nav-icon">📝</div><span>LKPD</span></li>
+            <li class="nav-item" data-page="kuis"><div class="nav-icon">🎯</div><span>Kuis (10 Soal)</span></li>
+            <li class="nav-item" data-page="refleksi"><div class="nav-icon">💭</div><span>Refleksi</span></li>
+        </ul>
+        <div class="nav-label" style="margin-top:20px;">Menu Guru</div>
+        <ul class="nav-menu">
+            <li class="nav-item" data-page="guru"><div class="nav-icon">👨‍🏫</div><span>Panel Guru</span></li>
+            <li class="nav-item" data-page="rekap"><div class="nav-icon">📊</div><span>Rekap Nilai</span></li>
+        </ul>
+        <div class="sidebar-footer">
+            <strong>Fase E · Kelas X</strong><br>
+            Fisika — Energi Terbarukan
+        </div>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MAIN -->
+    <main class="main">
+        <div class="topbar">
+            <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+            <div class="breadcrumb">LKPD / <strong id="breadcrumb-text">Halaman Depan</strong></div>
+            <div class="user-badge" onclick="navigateTo('kuis')">
+                <div class="user-avatar" id="userAvatar">?</div>
+                <span id="userName">Belum Login</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- HOME -->
+            <section class="page active" id="page-home">
+                <div class="hero">
+                    <div class="hero-content">
+                        <div class="hero-logo">🏙️</div>
+                        <span class="hero-badge">LKPD Tantangan · Fisika Fase E · 2026</span>
+                        <h1>Energi Terbarukan Paling Efektif untuk Kota Palu</h1>
+                        <p>Selamat datang di LKPD berbasis tantangan! Kali ini Anda akan berperan sebagai <strong>tim konsultan energi</strong> yang ditugaskan menganalisis dan memilih jenis energi terbarukan paling efektif untuk lingkungan perkotaan Kota Palu, berdasarkan data nyata dan analisis ilmiah.</p>
+                        <div class="hero-meta">
+                            <div class="hero-meta-item"><span class="dot"></span>SMAS Al-Azhar Mandiri Palu</div>
+                            <div class="hero-meta-item"><span class="dot"></span>Fase E · Kelas X</div>
+                            <div class="hero-meta-item"><span class="dot"></span>Guru: Muh Miswar Ramadhan, S.Pd., Gr.</div>
+                        </div>
+                        <div class="hero-actions">
+                            <button class="btn btn-gold" onclick="navigateTo('materi')">📘 Mulai Belajar</button>
+                            <button class="btn btn-outline-light" onclick="navigateTo('referensi')">🔗 Lihat Data Palu</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">🎯</div>Tantangan Utama</div>
+                    <div class="info-box tip" style="font-size:15px;padding:20px;">
+                        <span style="font-size:26px;">💡</span>
+                        <span><strong>Big Question:</strong> <em>"Jika kalian adalah tim konsultan energi yang dipercaya Pemerintah Kota Palu, jenis energi terbarukan apa yang PALING EFEKTIF untuk diterapkan di lingkungan perkotaan Palu? Berikan argumen berbasis data!"</em></span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">📋</div>Petunjuk Umum</div>
+                    <ul style="padding-left:22px;line-height:1.9;font-size:14px;color:#334155;">
+                        <li>Baca menu <strong>Materi</strong> dan <strong>Data Kota Palu</strong> terlebih dahulu.</li>
+                        <li>Isi <strong>Data Kelompok</strong> (maksimal <strong>10 anggota</strong>).</li>
+                        <li>Diskusikan dan jawab semua <strong>Aktivitas LKPD</strong> secara berkelompok.</li>
+                        <li>Klik tombol <strong>💾 Simpan LKPD</strong> di bawah LKPD sebelum lanjut ke Kuis.</li>
+                        <li>Kerjakan <strong>Kuis</strong> secara individu (hanya bisa 1 kali).</li>
+                        <li>Isi <strong>Refleksi</strong> di halaman LKPD bagian akhir.</li>
+                        <li>Klik <strong>"Unduh PDF Gabungan"</strong> untuk menyimpan hasil kerja kelompok.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">📊</div>5 Kriteria Penilaian "Paling Efektif"</div>
+                    <div class="info-grid">
+                        <div class="info-card"><span class="emoji">🌱</span><h4>1. Sumber Daya</h4><p>Apakah sumber daya melimpah di Palu?</p></div>
+                        <div class="info-card"><span class="emoji">⚙️</span><h4>2. Efisiensi</h4><p>Berapa energi yang dihasilkan?</p></div>
+                        <div class="info-card"><span class="emoji">💰</span><h4>3. Ekonomi</h4><p>Biaya investasi & payback period?</p></div>
+                        <div class="info-card"><span class="emoji">🌍</span><h4>4. Lingkungan</h4><p>Seberapa bersih & ramah lingkungan?</p></div>
+                        <div class="info-card"><span class="emoji">♻️</span><h4>5. Keberlanjutan</h4><p>Bisa diandalkan jangka panjang?</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MATERI -->
+            <section class="page" id="page-materi">
+                <div class="page-header">
+                    <span class="eyebrow">Menu 1 · Konsep</span>
+                    <h2>Materi: Energi Terbarukan</h2>
+                    <p>Pengantar singkat sebelum menganalisis potensi energi Kota Palu.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">🌍</div>Krisis Energi & Urgensi Transisi</div>
+                    <div class="article">
+                        <p>Selama lebih dari satu abad, peradaban manusia bergantung pada <strong>bahan bakar fosil</strong>—batu bara, minyak bumi, dan gas alam. Ketiganya terbentuk dari sisa makhluk hidup yang terkubur jutaan tahun. Pembakaran fosil menghasilkan emisi CO₂ yang menjadi penyebab utama <strong>pemanasan global</strong>.</p>
+                        <p>Kota Palu, seperti kota-kota lain di Indonesia, menghadapi tantangan: kebutuhan listrik terus meningkat, sementara pasokan dari energi fosil terbatas dan tidak ramah lingkungan. Diperlukan <strong>transisi menuju energi terbarukan</strong> yang lebih bersih, murah, dan berkelanjutan.</p>
+                        <div class="highlight-box">
+                            💡 <strong>Definisi:</strong> Energi terbarukan adalah energi yang berasal dari sumber daya alam yang dapat diperbarui secara terus-menerus, seperti matahari, angin, air, biomassa, dan panas bumi.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">⚡</div>5 Jenis Energi Terbarukan</div>
+                    <div class="data-card surya">
+                        <div class="data-card-header"><div class="emoji">☀️</div><h4>1. Energi Surya</h4></div>
+                        <p style="font-size:13.5px;color:#334155;line-height:1.7;">Mengubah cahaya matahari langsung menjadi listrik melalui <strong>panel fotovoltaik</strong>. Cocok dipasang di atap bangunan, tidak perlu lahan besar. Semakin tinggi radiasi matahari, semakin besar energi yang dihasilkan.</p>
+                    </div>
+                    <div class="data-card angin">
+                        <div class="data-card-header"><div class="emoji">💨</div><h4>2. Energi Angin</h4></div>
+                        <p style="font-size:13.5px;color:#334155;line-height:1.7;">Memanfaatkan gerakan angin untuk memutar <strong>turbin angin</strong> yang kemudian menggerakkan generator. Membutuhkan kecepatan angin minimal <strong>3 m/s</strong> agar efektif. Ideal di pesisir atau dataran tinggi.</p>
+                    </div>
+                    <div class="data-card air">
+                        <div class="data-card-header"><div class="emoji">💧</div><h4>3. Energi Air (PLTA)</h4></div>
+                        <p style="font-size:13.5px;color:#334155;line-height:1.7;">Memanfaatkan aliran air dari ketinggian untuk memutar turbin. Membutuhkan <strong>debit air</strong> dan <strong>ketinggian jatuh</strong> yang cukup. Sangat produktif, namun bergantung pada curah hujan.</p>
+                    </div>
+                    <div class="data-card biomassa">
+                        <div class="data-card-header"><div class="emoji">🗑️</div><h4>4. Biomassa (Waste to Energy)</h4></div>
+                        <p style="font-size:13.5px;color:#334155;line-height:1.7;">Mengubah sampah organik atau limbah pertanian menjadi <strong>biogas</strong> atau bahan bakar. Solusi ganda: mengurangi sampah sekaligus menghasilkan energi. Cocok untuk kota dengan masalah sampah.</p>
+                    </div>
+                    <div class="data-card geothermal">
+                        <div class="data-card-header"><div class="emoji">🌋</div><h4>5. Panas Bumi (Geothermal)</h4></div>
+                        <p style="font-size:13.5px;color:#334155;line-height:1.7;">Memanfaatkan panas dari dalam bumi untuk memanaskan air menjadi uap, kemudian memutar <strong>turbin uap</strong>. Sangat stabil, tidak bergantung cuaca, namun butuh investasi awal besar dan lokasi spesifik.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DATA KOTA PALU -->
+            <section class="page" id="page-referensi">
+                <div class="page-header">
+                    <span class="eyebrow">Menu 2 · Data Aktual</span>
+                    <h2>Data Kota Palu</h2>
+                    <p>Bacalah data berikut dengan cermat. Data inilah yang akan menjadi dasar analisis kelompok Anda.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">🏙️</div>Profil Umum Kota Palu</div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <tbody>
+                                <tr><td class="kriteria-cell">Lokasi</td><td>Lembah antara Pegunungan Gawalise & Teluk Palu</td></tr>
+                                <tr><td class="kriteria-cell">Iklim</td><td>Tropis, suhu 23°C – 36,5°C</td></tr>
+                                <tr><td class="kriteria-cell">Curah Hujan</td><td>Rendah, musim kering pada Desember–Februari</td></tr>
+                                <tr><td class="kriteria-cell">Kebutuhan listrik 2025</td><td><strong>713 GWh</strong></td></tr>
+                                <tr><td class="kriteria-cell">Proyeksi kebutuhan 2034</td><td><strong>2.110 GWh</strong> (naik ±3× lipat)</td></tr>
+                                <tr><td class="kriteria-cell">Beban puncak 2025</td><td>136 MW</td></tr>
+                                <tr><td class="kriteria-cell">Proyeksi beban puncak 2034</td><td>401 MW</td></tr>
+                                <tr><td class="kriteria-cell">Bauran EBT Sulawesi Tengah</td><td>9,83% (target RUED 2025: 30,51%)</td></tr>
+                                <tr><td class="kriteria-cell">Tantangan utama</td><td>Pemadaman listrik bergilir akibat pasokan kurang</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">📊</div>Potensi 5 Energi Terbarukan di Palu</div>
+                    <div class="data-card surya">
+                        <div class="data-card-header"><div class="emoji">☀️</div><h4>1. Energi Surya</h4></div>
+                        <ul class="data-list">
+                            <li>Radiasi matahari: <strong>5,43 kWh/m²/hari</strong> (rata-rata nasional: 4,8)</li>
+                            <li>Suhu udara: 27,3°C – 37°C</li>
+                            <li>Nilai insolasi rata-rata: <strong>6,6</strong> (tinggi)</li>
+                            <li>Payback period PLTS atap: <strong>5,1–6,3 tahun</strong></li>
+                            <li>Umur teknis panel: 25 tahun</li>
+                            <li>Potensi reduksi CO₂: 2,4–8,9 ton/tahun per sistem</li>
+                            <li>Sangat cocok dipasang di <strong>atap rumah, sekolah, kantor</strong></li>
+                        </ul>
+                    </div>
+                    <div class="data-card angin">
+                        <div class="data-card-header"><div class="emoji">💨</div><h4>2. Energi Angin</h4></div>
+                        <ul class="data-list">
+                            <li>Kecepatan angin onshore (darat): <strong>3,6 m/s</strong></li>
+                            <li>Kecepatan angin offshore (laut): <strong>5,3 m/s</strong></li>
+                            <li>Kecepatan efektif turbin: 3–9,5 m/s</li>
+                            <li>Waktu optimal: pukul 11.30–15.00 (4 jam/hari)</li>
+                            <li>Potensi PLTB: 28.308 kWh/hari</li>
+                            <li>⚠️ Kecepatan onshore hanya sedikit di atas batas minimum</li>
+                        </ul>
+                    </div>
+                    <div class="data-card air">
+                        <div class="data-card-header"><div class="emoji">💧</div><h4>3. Energi Air</h4></div>
+                        <ul class="data-list">
+                            <li>PLTA Poso: kapasitas <strong>515 MW</strong></li>
+                            <li>Memasok 4 provinsi: Sulteng, Sulsel, Sulbar, Sultra</li>
+                            <li>Jarak dari Kota Palu: ± 100 km</li>
+                            <li>⚠️ Kendala <strong>El Nino</strong>: debit air turun → pasokan berkurang</li>
+                        </ul>
+                    </div>
+                    <div class="data-card biomassa">
+                        <div class="data-card-header"><div class="emoji">🗑️</div><h4>4. Biomassa (Sampah)</h4></div>
+                        <ul class="data-list">
+                            <li>Proyek biogas di <strong>TPA Kawatuna</strong> (kerja sama dengan Jepang)</li>
+                            <li>Konsep: <em>Waste to Energy</em> (WtE)</li>
+                            <li>Mengurangi sampah perkotaan sekaligus menghasilkan energi</li>
+                            <li>Butuh pemilahan sampah yang baik dari masyarakat</li>
+                        </ul>
+                    </div>
+                    <div class="data-card geothermal">
+                        <div class="data-card-header"><div class="emoji">🌋</div><h4>5. Panas Bumi</h4></div>
+                        <ul class="data-list">
+                            <li>Terletak di Kabupaten Sigi (dekat Palu)</li>
+                            <li>Potensi: <strong>14 MWe</strong> (prospek Kadidia)</li>
+                            <li>Target produksi komersial: <strong>40 MW</strong> mulai 2033</li>
+                            <li>⚠️ Belum bisa dimanfaatkan dalam waktu dekat (butuh 7+ tahun)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">🌏</div>Konteks Global Sulawesi</div>
+                    <div class="info-box note">
+                        <span>📈</span>
+                        <span><strong>Potensi EBT Sulawesi:</strong> <strong>257,36 GW</strong>—salah satu yang terbesar di Indonesia. Namun pemanfaatan baru <strong>9,83%</strong>. Peluang besar untuk pengembangan energi bersih!</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LKPD -->
+            <section class="page" id="page-lkpd">
+                <div class="page-header">
+                    <span class="eyebrow">Menu 3 · Lembar Kerja</span>
+                    <h2>LKPD: Analisis Energi Paling Efektif untuk Kota Palu</h2>
+                    <p>Diskusikan dalam kelompok, isi analisis, dan ambil keputusan bersama.</p>
+                </div>
+
+                <div class="info-box note" style="margin-bottom:20px;">
+                    <span>📄</span>
+                    <span><strong>Alur Pengisian:</strong> Isi Data Kelompok → Aktivitas 1 → Aktivitas 2 → Aktivitas 3 → Aktivitas 4 → Simpan LKPD → Isi Refleksi → Unduh PDF.</span>
+                </div>
+
+                <div id="lkpdExportArea">
+                    <!-- COVER PDF -->
+                    <div class="pdf-cover">
+                        <div class="pdf-cover-logo">🏙️</div>
+                        <h1>Laporan Analisis Kelompok</h1>
+                        <h2>Energi Terbarukan Paling Efektif untuk Kota Palu</h2>
+                        <div class="pdf-cover-meta">
+                            <strong>Mata Pelajaran:</strong> Fisika<br>
+                            <strong>Materi:</strong> Energi Terbarukan Kota Palu<br>
+                            <strong>Kelas/Fase:</strong> X / E<br>
+                            <strong>Tahun Ajaran:</strong> 2025/2026<br>
+                            <strong>Guru:</strong> Muh Miswar Ramadhan, S.Pd., Gr.<br>
+                            <hr style="margin:14px 0;border:none;border-top:1px dashed #d4af37;">
+                            <strong>Kelompok:</strong> <span id="pdfKelompok">—</span><br>
+                            <strong>Kelas:</strong> <span id="pdfKelas">—</span><br>
+                            <strong>Anggota:</strong> <span id="pdfAnggota">—</span><br>
+                            <strong>Tanggal:</strong> <span id="pdfTanggal">—</span><br>
+                            <hr style="margin:14px 0;border:none;border-top:1px dashed #d4af37;">
+                            <strong>Siswa Kuis:</strong> <span id="pdfNamaSiswa">—</span><br>
+                            <strong>Skor Kuis:</strong> <span id="pdfSkorKuis">—</span>
+                        </div>
+                    </div>
+
+                    <div class="pdf-section-title first">BAGIAN 1: LEMBAR KERJA PESERTA DIDIK</div>
+
+                    <div class="lkpd-header">
+                        <h3>Analisis Energi Terbarukan Kota Palu</h3>
+                        <p>Fisika Fase E · SMAS Al-Azhar Mandiri Palu</p>
+                    </div>
+
+                    <div class="kelompok-form">
+                        <div class="kelompok-grid">
+                            <div class="form-group"><label>🏷️ Nama Kelompok</label><input type="text" id="inputKelompok" placeholder="Contoh: Kelompok 1"></div>
+                            <div class="form-group"><label>🏫 Kelas</label><input type="text" id="inputKelas" placeholder="Contoh: X MIPA 1"></div>
+                            <div class="form-group"><label>📅 Tanggal</label><input type="text" id="inputTanggal" readonly></div>
+                            <div class="form-group"><label>⏱️ Waktu Pengerjaan</label><input type="text" id="inputWaktu" readonly value="00:00:00"></div>
+                        </div>
+                        <div class="form-group" style="margin-top: 18px;">
+                            <label style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                                <span>👥 Nama Anggota Kelompok (Maksimal 10 Anggota)</span>
+                                <button type="button" class="btn btn-sm btn-primary" onclick="addAnggota()" id="btnAddAnggota">+ Tambah Anggota</button>
+                            </label>
+                            <div class="anggota-list" id="anggotaList"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title"><div class="card-title-icon">1️⃣</div>Aktivitas 1 — Analisis Awal 5 Energi Terbarukan</div>
+                        <div class="lkpd-section">
+                            <h4>📌 Petunjuk</h4>
+                            <p class="instruction">Bacalah kembali <strong>Data Kota Palu</strong>. Untuk setiap jenis energi, berikan penilaian awal (1 = Sangat Kurang, 5 = Sangat Baik) berdasarkan data yang tersedia. Tuliskan juga alasan singkat pada kolom yang tersedia.</p>
+                        </div>
+                        <div id="aktivitas1Container"></div>
+                        <div class="akt-progress">
+                            <span>📊 Progress: <strong id="akt1ProgressText">0/5</strong> energi telah dianalisis</span>
+                            <div class="progress-mini"><div class="progress-mini-fill" id="akt1ProgressFill"></div></div>
+                            <span id="akt1ProgressPercent">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title"><div class="card-title-icon">2️⃣</div>Aktivitas 2 — Evaluasi dengan 5 Kriteria</div>
+                        <div class="lkpd-section">
+                            <h4>📌 Petunjuk</h4>
+                            <p class="instruction">Berikan skor 1–5 untuk setiap jenis energi pada masing-masing kriteria. Gunakan data dari menu <strong>Data Kota Palu</strong> sebagai dasar penilaian. Jumlahkan total skor setiap energi.</p>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="data-table" id="tabelKriteria">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 22%;">Kriteria</th>
+                                        <th style="width: 15.6%;">☀️ Surya</th>
+                                        <th style="width: 15.6%;">💨 Angin</th>
+                                        <th style="width: 15.6%;">💧 Air</th>
+                                        <th style="width: 15.6%;">🗑️ Biomassa</th>
+                                        <th style="width: 15.6%;">🌋 Panas Bumi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabelKriteriaBody"></tbody>
+                            </table>
+                        </div>
+                        <div style="margin-top:16px;padding:16px;background:linear-gradient(135deg,#f0f7ff,#e0ebfa);border-radius:10px;border:1.5px solid var(--navy-600);">
+                            <div style="font-size:13px;color:var(--navy-700);font-weight:600;margin-bottom:10px;">🏆 Peringkat Sementara (otomatis dihitung):</div>
+                            <div id="peringkatContainer" style="display:flex;flex-wrap:wrap;gap:10px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title"><div class="card-title-icon">3️⃣</div>Aktivitas 3 — Keputusan Kelompok</div>
+                        <div class="lkpd-section">
+                            <h4>📌 Petunjuk</h4>
+                            <p class="instruction">Setelah mendiskusikan hasil analisis di Aktivitas 1 & 2, tentukan <strong>satu jenis energi terbarukan</strong> yang menurut kelompok Anda paling efektif untuk lingkungan perkotaan Kota Palu. Berikan minimal <strong>3 argumen</strong> berbasis data.</p>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">🏆</span><span><strong>Jenis energi yang kami pilih:</strong></span></div>
+                            <input type="text" data-lkpd="keputusan" placeholder="Contoh: Energi Surya (PLTS Atap)..." style="font-size:16px;font-weight:600;padding:14px;background:white;border:1.5px solid var(--gold-500);">
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">1</span>Argumen 1 (berbasis data)</div>
+                            <textarea data-lkpd="arg1" placeholder="Data apa yang mendukung pilihan ini? Contoh: Radiasi matahari Palu 5,43 kWh/m²/hari..." style="min-height:100px;"></textarea>
+                            <div class="jawaban-text empty" data-jawaban="arg1">Belum diisi</div>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">2</span>Argumen 2 (berbasis data)</div>
+                            <textarea data-lkpd="arg2" placeholder="Data pendukung kedua..." style="min-height:100px;"></textarea>
+                            <div class="jawaban-text empty" data-jawaban="arg2">Belum diisi</div>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">3</span>Argumen 3 (berbasis data)</div>
+                            <textarea data-lkpd="arg3" placeholder="Data pendukung ketiga..." style="min-height:100px;"></textarea>
+                            <div class="jawaban-text empty" data-jawaban="arg3">Belum diisi</div>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">⚠️</span>Kekurangan / Tantangan yang perlu diatasi</div>
+                            <textarea data-lkpd="kekurangan" placeholder="Apa kekurangan atau tantangan dari energi yang dipilih?" style="min-height:120px;"></textarea>
+                            <div class="jawaban-text empty" data-jawaban="kekurangan">Belum diisi</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title"><div class="card-title-icon">4️⃣</div>Aktivitas 4 — Rekomendasi Kebijakan</div>
+                        <div class="lkpd-section">
+                            <h4>📌 Petunjuk</h4>
+                            <p class="instruction">Bayangkan kelompok Anda adalah tim konsultan Pemerintah Kota Palu. Tuliskan <strong>rekomendasi konkret</strong> dan <strong>langkah strategis</strong> untuk menerapkan energi pilihan Anda di lingkungan perkotaan Palu.</p>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">📋</span>Rekomendasi Utama (min. 100 karakter)</div>
+                            <textarea data-lkpd="rekomendasi" placeholder="Contoh: Kami merekomendasikan pemasangan PLTS atap di 100 bangunan pemerintahan..." style="min-height:150px;"></textarea>
+                            <div class="jawaban-text empty" data-jawaban="rekomendasi">Belum diisi</div>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">🎯</span>Langkah Strategis (min. 100 karakter)</div>
+                            <textarea data-lkpd="langkah" placeholder="Contoh: Tahap 1 (2026): Sosialisasi & pemetaan atap..." style="min-height:150px;"></textarea>
+                            <div class="jawaban-text empty" data-jawaban="langkah">Belum diisi</div>
+                        </div>
+                    </div>
+
+                    <div class="save-toolbar lkpd">
+                        <div class="save-toolbar-info">
+                            <div class="save-toolbar-icon">💾</div>
+                            <div class="save-toolbar-text">
+                                <h5>Simpan Jawaban LKPD</h5>
+                                <p>Jawaban tersimpan otomatis. Klik tombol untuk menyimpan manual.</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <button class="btn btn-primary btn-sm" onclick="simpanLKPD()">💾 Simpan LKPD</button>
+                            <button class="btn btn-ghost btn-sm" onclick="resetLKPD()">↻ Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="pdf-section-title">BAGIAN 2: HASIL KUIS ENERGI TERBARUKAN KOTA PALU</div>
+                    <div id="pdfKuisSection"></div>
+
+                    <div class="pdf-section-title">BAGIAN 3: REFLEKSI PEMBELAJARAN</div>
+
+                    <div class="card">
+                        <div class="card-title"><div class="card-title-icon">💭</div>Refleksi Siswa</div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">1</span><strong>Konsep paling penting</strong> yang saya pelajari hari ini adalah...</div>
+                            <textarea data-lkpd="ref1" id="ref1" placeholder="Tuliskan konsep kunci..."></textarea>
+                            <div class="jawaban-text empty" data-jawaban="ref1">Belum diisi</div>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">2</span><strong>Bagian yang masih sulit</strong> saya pahami adalah...</div>
+                            <textarea data-lkpd="ref2" id="ref2" placeholder="Tuliskan bagian yang membingungkan..."></textarea>
+                            <div class="jawaban-text empty" data-jawaban="ref2">Belum diisi</div>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">3</span><strong>Bagaimana data mengubah pandangan saya tentang energi di Palu?</strong></div>
+                            <textarea data-lkpd="ref3" id="ref3" placeholder="Tuliskan perubahan pandangan Anda..."></textarea>
+                            <div class="jawaban-text empty" data-jawaban="ref3">Belum diisi</div>
+                        </div>
+                        <div class="reflection-item">
+                            <div class="reflection-q"><span class="reflection-num">4</span><strong>Jika saya menjadi pemimpin Kota Palu</strong>, langkah pertama yang akan saya lakukan adalah...</div>
+                            <textarea data-lkpd="ref4" id="ref4" placeholder="Tuliskan langkah konkret..."></textarea>
+                            <div class="jawaban-text empty" data-jawaban="ref4">Belum diisi</div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="background:linear-gradient(135deg,#f8fafc,#eef3fa);">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;text-align:center;">
+                            <div>
+                                <p style="font-size:13px;color:var(--text-muted);margin-bottom:60px;">Mengetahui,<br>Guru Mata Pelajaran</p>
+                                <p style="font-weight:700;color:var(--navy-800);border-top:1px solid var(--navy-600);padding-top:6px;">Muh Miswar Ramadhan, S.Pd., Gr.</p>
+                                <p style="font-size:11.5px;color:var(--text-muted);">NIP. -</p>
+                            </div>
+                            <div>
+                                <p style="font-size:13px;color:var(--text-muted);margin-bottom:60px;">&nbsp;<br>Ketua Kelompok</p>
+                                <p style="font-weight:700;color:var(--navy-800);border-top:1px solid var(--navy-600);padding-top:6px;" id="ttdKetua">___________________</p>
+                                <p style="font-size:11.5px;color:var(--text-muted);">Nama Jelas & Tanda Tangan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="export-panel">
+                        <div class="export-panel-content">
+                            <div class="export-panel-icon">📥</div>
+                            <h3>Unduh Laporan PDF Gabungan</h3>
+                            <p class="export-desc">Anda telah menyelesaikan seluruh bagian: <strong>Analisis</strong>, <strong>Kuis</strong>, dan <strong>Refleksi</strong>. Klik tombol di bawah untuk mengunduh semua hasil dalam <strong>satu file PDF</strong>.</p>
+                            <div class="export-buttons">
+                                <button class="btn btn-pdf btn-lg" onclick="exportToPDF(event)">📥 Unduh PDF Gabungan</button>
+                                <button class="btn btn-gold btn-lg" onclick="printLKPD()">🖨️ Print Gabungan</button>
+                            </div>
+                            <div class="export-status">
+                                <span>ℹ️</span>
+                                <span><strong>iOS/iPhone:</strong> Akan muncul menu "Share" → pilih "Save to Files" atau "Save to Books". <strong>Mac/Windows:</strong> file langsung terunduh.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pdf-footer">
+                        Laporan Analisis · Energi Terbarukan Kota Palu · Fisika Fase E · SMAS Al-Azhar Mandiri Palu · 2025/2026
+                    </div>
+                </div>
+            </section>
+
+            <!-- KUIS -->
+            <section class="page" id="page-kuis">
+                <div class="page-header">
+                    <span class="eyebrow">Menu 4 · Evaluasi Individu</span>
+                    <h2>Kuis Energi Terbarukan Kota Palu (10 Soal)</h2>
+                    <p>Kuis dikerjakan secara <strong>individu</strong> dan hanya dapat dikerjakan <strong>satu kali</strong>.</p>
+                </div>
+
+                <div id="kuisLoginSection">
+                    <div class="login-card">
+                        <div class="login-icon">🔐</div>
+                        <h2>Login Siswa</h2>
+                        <p class="login-subtitle">Masukkan identitas Anda untuk memulai kuis.</p>
+                        <div class="login-error" id="loginError"></div>
+                        <div class="form-group"><label>Nama Lengkap</label><input type="text" id="loginNama" placeholder="Tulis nama lengkap..." autocomplete="name"></div>
+                        <div class="form-group"><label>Kelas</label><input type="text" id="loginKelas" placeholder="Contoh: X MIPA 1"></div>
+                        <div class="form-group"><label>Nomor Absen</label><input type="text" id="loginAbsen" inputmode="numeric" placeholder="Contoh: 15"></div>
+                        <button class="btn btn-gold btn-lg" onclick="loginSiswa()">🔓 Masuk & Mulai Kuis</button>
+                        <div class="info-box danger" style="margin-top:20px;">
+                            <span>⚠️</span>
+                            <span>Setelah login dan submit, <strong>kuis terkunci permanen</strong>.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="kuisLockedSection" style="display:none;">
+                    <div class="locked-banner">
+                        <div class="locked-banner-icon">🔒</div>
+                        <div class="locked-banner-content">
+                            <h3>Kuis Telah Dikerjakan</h3>
+                            <p>Anda (<strong id="lockedNama">-</strong>) telah mengerjakan kuis pada <strong id="lockedWaktu">-</strong>.</p>
+                            <p style="margin-top:8px;">Nilai Anda: <strong id="lockedSkor" style="font-size:18px;color:#7a0d29;">-</strong></p>
+                            <p style="margin-top:12px;font-size:13px;">Silakan buka menu <strong>LKPD</strong> → isi Refleksi → <strong>Unduh PDF Gabungan</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="kuisFormSection" style="display:none;">
+                    <div class="info-box note" style="margin-bottom:20px;">
+                        <span>✅</span>
+                        <span>Login berhasil! Anda masuk sebagai <strong id="kuisNamaSiswa">-</strong>.</span>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">1</span><span>Berdasarkan data, berapa radiasi matahari rata-rata Kota Palu?</span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k1" value="A"><span class="option-label">A</span><span>3,6 kWh/m²/hari</span></label>
+                            <label class="option"><input type="radio" name="k1" value="B"><span class="option-label">B</span><span>4,8 kWh/m²/hari</span></label>
+                            <label class="option"><input type="radio" name="k1" value="C"><span class="option-label">C</span><span>5,43 kWh/m²/hari</span></label>
+                            <label class="option"><input type="radio" name="k1" value="D"><span class="option-label">D</span><span>6,6 kWh/m²/hari</span></label>
+                            <label class="option"><input type="radio" name="k1" value="E"><span class="option-label">E</span><span>8,9 kWh/m²/hari</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k1"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">2</span><span>Kecepatan angin onshore di Kota Palu sebesar 3,6 m/s. Bagaimana kesimpulan yang tepat mengenai potensi energi angin Palu?</span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k2" value="A"><span class="option-label">A</span><span>Sangat ideal untuk PLTB skala besar</span></label>
+                            <label class="option"><input type="radio" name="k2" value="B"><span class="option-label">B</span><span>Hanya sedikit di atas batas minimum turbin (3 m/s) sehingga kurang optimal</span></label>
+                            <label class="option"><input type="radio" name="k2" value="C"><span class="option-label">C</span><span>Tidak dapat digunakan sama sekali</span></label>
+                            <label class="option"><input type="radio" name="k2" value="D"><span class="option-label">D</span><span>Lebih baik dari energi surya</span></label>
+                            <label class="option"><input type="radio" name="k2" value="E"><span class="option-label">E</span><span>Kecepatan angin tidak berhubungan dengan PLTB</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k2"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">3</span><span>PLTA yang memasok listrik untuk 4 provinsi di Sulawesi dan berjarak ±100 km dari Kota Palu adalah...</span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k3" value="A"><span class="option-label">A</span><span>PLTA Gumbasa</span></label>
+                            <label class="option"><input type="radio" name="k3" value="B"><span class="option-label">B</span><span>PLTA Poso</span></label>
+                            <label class="option"><input type="radio" name="k3" value="C"><span class="option-label">C</span><span>PLTA Cirata</span></label>
+                            <label class="option"><input type="radio" name="k3" value="D"><span class="option-label">D</span><span>PLTA Saguling</span></label>
+                            <label class="option"><input type="radio" name="k3" value="E"><span class="option-label">E</span><span>PLTA Jatiluhur</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k3"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">4</span><span>Kendala utama PLTA Poso yang berdampak pada pasokan listrik Sulawesi adalah...</span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k4" value="A"><span class="option-label">A</span><span>Kebakaran hutan</span></label>
+                            <label class="option"><input type="radio" name="k4" value="B"><span class="option-label">B</span><span>Gempa bumi</span></label>
+                            <label class="option"><input type="radio" name="k4" value="C"><span class="option-label">C</span><span>El Nino yang menurunkan debit air</span></label>
+                            <label class="option"><input type="radio" name="k4" value="D"><span class="option-label">D</span><span>Kerusakan turbin</span></label>
+                            <label class="option"><input type="radio" name="k4" value="E"><span class="option-label">E</span><span>Kekurangan operator</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k4"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">5</span><span>Fasilitas pengolahan sampah menjadi energi (biogas) di Kota Palu berada di...</span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k5" value="A"><span class="option-label">A</span><span>TPA Kawatuna</span></label>
+                            <label class="option"><input type="radio" name="k5" value="B"><span class="option-label">B</span><span>TPA Palu Barat</span></label>
+                            <label class="option"><input type="radio" name="k5" value="C"><span class="option-label">C</span><span>TPA Tondo</span></label>
+                            <label class="option"><input type="radio" name="k5" value="D"><span class="option-label">D</span><span>TPA Sigi</span></label>
+                            <label class="option"><input type="radio" name="k5" value="E"><span class="option-label">E</span><span>TPA Donggala</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k5"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">6</span><span>Potensi panas bumi di Kabupaten Sigi (dekat Palu) adalah... <span class="q-badge numerasi">Numerasi</span></span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k6" value="A"><span class="option-label">A</span><span>5 MWe</span></label>
+                            <label class="option"><input type="radio" name="k6" value="B"><span class="option-label">B</span><span>14 MWe</span></label>
+                            <label class="option"><input type="radio" name="k6" value="C"><span class="option-label">C</span><span>40 MWe</span></label>
+                            <label class="option"><input type="radio" name="k6" value="D"><span class="option-label">D</span><span>140 MWe</span></label>
+                            <label class="option"><input type="radio" name="k6" value="E"><span class="option-label">E</span><span>400 MWe</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k6"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">7</span><span>Kebutuhan listrik Kota Palu pada tahun 2025 mencapai... <span class="q-badge numerasi">Numerasi</span></span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k7" value="A"><span class="option-label">A</span><span>136 GWh</span></label>
+                            <label class="option"><input type="radio" name="k7" value="B"><span class="option-label">B</span><span>401 GWh</span></label>
+                            <label class="option"><input type="radio" name="k7" value="C"><span class="option-label">C</span><span>713 GWh</span></label>
+                            <label class="option"><input type="radio" name="k7" value="D"><span class="option-label">D</span><span>2.110 GWh</span></label>
+                            <label class="option"><input type="radio" name="k7" value="E"><span class="option-label">E</span><span>3.000 GWh</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k7"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">8</span><span>Berdasarkan data, mengapa energi surya sangat prospektif untuk Kota Palu? <span class="q-badge">Analisis</span></span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k8" value="A"><span class="option-label">A</span><span>Karena Palu sering hujan</span></label>
+                            <label class="option"><input type="radio" name="k8" value="B"><span class="option-label">B</span><span>Karena radiasi matahari tinggi (5,43 kWh/m²/hari), payback period singkat (5-6 tahun), dan umur panel 25 tahun</span></label>
+                            <label class="option"><input type="radio" name="k8" value="C"><span class="option-label">C</span><span>Karena harga panel surya paling murah di dunia</span></label>
+                            <label class="option"><input type="radio" name="k8" value="D"><span class="option-label">D</span><span>Karena angin di Palu terlalu kencang</span></label>
+                            <label class="option"><input type="radio" name="k8" value="E"><span class="option-label">E</span><span>Karena tidak ada sumber energi lain</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k8"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">9</span><span>Jika kebutuhan listrik Palu 713 GWh pada 2025 dan proyeksi 2.110 GWh pada 2034, berapa kali lipat kenaikannya? <span class="q-badge numerasi">Numerasi</span></span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k9" value="A"><span class="option-label">A</span><span>Sekitar 1,5 kali</span></label>
+                            <label class="option"><input type="radio" name="k9" value="B"><span class="option-label">B</span><span>Sekitar 2 kali</span></label>
+                            <label class="option"><input type="radio" name="k9" value="C"><span class="option-label">C</span><span>Sekitar 3 kali</span></label>
+                            <label class="option"><input type="radio" name="k9" value="D"><span class="option-label">D</span><span>Sekitar 4 kali</span></label>
+                            <label class="option"><input type="radio" name="k9" value="E"><span class="option-label">E</span><span>Sekitar 5 kali</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k9"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-number">10</span><span>Berdasarkan analisis data, energi terbarukan yang <strong>paling efektif</strong> untuk lingkungan perkotaan Kota Palu adalah... <span class="q-badge">Sintesis</span></span></div>
+                        <div class="quiz-options">
+                            <label class="option"><input type="radio" name="k10" value="A"><span class="option-label">A</span><span>Panas bumi, karena stabil</span></label>
+                            <label class="option"><input type="radio" name="k10" value="B"><span class="option-label">B</span><span>Angin, karena gratis</span></label>
+                            <label class="option"><input type="radio" name="k10" value="C"><span class="option-label">C</span><span>Air, karena ada PLTA Poso</span></label>
+                            <label class="option"><input type="radio" name="k10" value="D"><span class="option-label">D</span><span>Surya, karena radiasi tinggi, tidak perlu lahan luas (bisa di atap), payback period 5-6 tahun, dan ramah lingkungan</span></label>
+                            <label class="option"><input type="radio" name="k10" value="E"><span class="option-label">E</span><span>Biomassa, karena Palu punya banyak sampah</span></label>
+                        </div>
+                        <div class="feedback" id="fb-k10"></div>
+                    </div>
+
+                    <div class="save-toolbar kuis">
+                        <div class="save-toolbar-info">
+                            <div class="save-toolbar-icon">💾</div>
+                            <div class="save-toolbar-text">
+                                <h5>Simpan Jawaban Kuis</h5>
+                                <p>Pilihan Anda tersimpan otomatis. Klik simpan sebelum submit final.</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <button class="btn btn-gold btn-sm" onclick="simpanKuis()">💾 Simpan Kuis</button>
+                            <button class="btn btn-ghost btn-sm" onclick="resetKuisBeforeSubmit()">↻ Reset Pilihan</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="btn-group" style="margin-top:0;">
+                            <button class="btn btn-primary btn-lg" onclick="cekKuisDanSubmit()" id="btnSubmitKuis">✓ Kirim Jawaban (Final)</button>
+                        </div>
+                        <div class="result-box" id="resultKuis" style="margin-top:16px;padding:22px;border-radius:12px;display:none;">
+                            <div id="scoreKuis" style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--navy-800);">0/10</div>
+                            <div id="titleKuis" style="font-weight:700;margin-bottom:8px;font-size:16px;color:var(--navy-800);"></div>
+                            <div id="msgKuis"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REFLEKSI -->
+            <section class="page" id="page-refleksi">
+                <div class="page-header">
+                    <span class="eyebrow">Menu 5 · Metakognisi</span>
+                    <h2>Refleksi Pembelajaran</h2>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">💭</div>Refleksi Terletak di Halaman LKPD</div>
+                    <div class="info-box note">
+                        <span>ℹ️</span>
+                        <span>Untuk kemudahan export PDF, <strong>form Refleksi terletak di halaman LKPD</strong> (Bagian 3 setelah Kuis).</span>
+                    </div>
+                    <button class="btn btn-primary btn-lg" onclick="navigateTo('lkpd')">📝 Buka Halaman LKPD — Isi Refleksi & Unduh PDF</button>
+                </div>
+            </section>
+
+            <!-- PANEL GURU -->
+            <section class="page" id="page-guru">
+                <div class="page-header">
+                    <span class="eyebrow">Menu Guru</span>
+                    <h2>Panel Guru</h2>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">📊</div>Statistik Kelas</div>
+                    <div class="info-grid">
+                        <div class="info-card"><span class="emoji">👥</span><h4>Total Siswa</h4><p id="guruTotalSiswa">0</p></div>
+                        <div class="info-card"><span class="emoji">🎯</span><h4>Rata-rata Kuis</h4><p id="guruRataKuis">Belum ada data</p></div>
+                        <div class="info-card"><span class="emoji">🏆</span><h4>Nilai Tertinggi</h4><p id="guruNilaiMax">Belum ada data</p></div>
+                        <div class="info-card"><span class="emoji">📉</span><h4>Nilai Terendah</h4><p id="guruNilaiMin">Belum ada data</p></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">⚙️</div>Pengaturan Data</div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="muatDataGuru()">🔄 Muat Ulang</button>
+                        <button class="btn btn-pdf" onclick="exportRekapPDF()">📄 Unduh Rekap PDF</button>
+                        <button class="btn btn-success" onclick="exportRekapJSON()">💾 Ekspor Rekap JSON</button>
+                        <button class="btn btn-ghost" onclick="hapusSemuaData()">🗑️ Hapus Semua Data</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REKAP -->
+            <section class="page" id="page-rekap">
+                <div class="page-header">
+                    <span class="eyebrow">Menu Guru</span>
+                    <h2>Rekapitulasi Nilai Kuis</h2>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">📊</div>Statistik Rekap</div>
+                    <div class="info-grid">
+                        <div class="info-card"><span class="emoji">👥</span><h4>Total Peserta</h4><p id="rekapTotal">0</p></div>
+                        <div class="info-card"><span class="emoji">🎯</span><h4>Rata-rata</h4><p id="rekapRata">0</p></div>
+                        <div class="info-card"><span class="emoji">🏆</span><h4>Tertinggi</h4><p id="rekapMax">0</p></div>
+                        <div class="info-card"><span class="emoji">✅</span><h4>Tuntas KKM</h4><p id="rekapTuntas">0</p></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title"><div class="card-title-icon">📋</div>Daftar Nilai Siswa</div>
+                    <div id="rekapTableContainer">
+                        <p style="color:var(--text-muted);text-align:center;padding:40px 0;">Belum ada data siswa.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="muatRekap()">🔄 Muat Ulang</button>
+                        <button class="btn btn-pdf" onclick="exportRekapPDF()">📄 Unduh Rekap PDF</button>
+                        <button class="btn btn-success" onclick="exportRekapJSON()">💾 Ekspor JSON</button>
+                        <button class="btn btn-gold" onclick="imporRekapJSON()">📥 Impor JSON</button>
+                    </div>
+                    <input type="file" id="fileImporJSON" accept=".json,application/json" style="display:none;" onchange="handleImporJSON(event)">
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<div id="rekapNilaiPDF" style="position:absolute;left:-9999px;top:0;width:800px;background:white;">
+    <div class="rekap-pdf-content" id="rekapPDFContent"></div>
+</div>
+
+<script>
+/* =========================================================
+   iOS/SAFARI SAFE STORAGE
+   ========================================================= */
+const SafeStorage = {
+    _available: null,
+    isAvailable() {
+        if (this._available !== null) return this._available;
+        try {
+            const test = '__storage_test__';
+            window.localStorage.setItem(test, test);
+            window.localStorage.removeItem(test);
+            this._available = true;
+        } catch (e) {
+            this._available = false;
+            console.warn('localStorage tidak tersedia (mungkin Private Browsing)');
+        }
+        return this._available;
+    },
+    get(key) {
+        if (!this.isAvailable()) return null;
+        try { return window.localStorage.getItem(key); } catch (e) { return null; }
+    },
+    set(key, val) {
+        if (!this.isAvailable()) return false;
+        try { window.localStorage.setItem(key, val); return true; } catch (e) { return false; }
+    },
+    remove(key) {
+        if (!this.isAvailable()) return;
+        try { window.localStorage.removeItem(key); } catch (e) {}
+    }
+};
+
+const CFG = window.LKPD_CONFIG;
+const ENERGY_TYPES = window.ENERGY_TYPES;
+const KRITERIA = window.KRITERIA;
+const STORAGE_KEY = 'lkpd_energi_palu_v1';
+const SISWA_DB_KEY = 'lkpd_energi_palu_siswa_db';
+const SESSION_KEY = 'lkpd_energi_palu_session';
+
+function loadSiswaDB() {
+    try { const d = SafeStorage.get(SISWA_DB_KEY); return d ? JSON.parse(d) : {}; }
+    catch (e) { return {}; }
+}
+function saveSiswaDB(db) {
+    try { SafeStorage.set(SISWA_DB_KEY, JSON.stringify(db)); } catch (e) {}
+}
+
+let state = {
+    kelompok: { nama: '', kelas: '', anggota: [] },
+    lkpd: {},
+    aktivitas1: {},
+    aktivitas2: {},
+    refleksi: { mood: null, jawaban: {} },
+    kuisDraft: {},
+    waktuMulai: null
+};
+let sessionSiswa = null;
+
+function saveState() { try { SafeStorage.set(STORAGE_KEY, JSON.stringify(state)); } catch (e) {} }
+function loadState() {
+    try {
+        const s = SafeStorage.get(STORAGE_KEY);
+        if (s) {
+            const parsed = JSON.parse(s);
+            state = { ...state, ...parsed };
+            if (!state.aktivitas1 || typeof state.aktivitas1 !== 'object') state.aktivitas1 = {};
+            if (!state.aktivitas2 || typeof state.aktivitas2 !== 'object') state.aktivitas2 = {};
+            if (!state.kelompok || typeof state.kelompok !== 'object') state.kelompok = { nama: '', kelas: '', anggota: [] };
+            if (!Array.isArray(state.kelompok.anggota)) state.kelompok.anggota = [];
+        }
+    } catch (e) {}
+}
+function saveSession() {
+    try {
+        if (sessionSiswa) SafeStorage.set(SESSION_KEY, JSON.stringify(sessionSiswa));
+        else SafeStorage.remove(SESSION_KEY);
+    } catch (e) {}
+}
+function loadSession() {
+    try { const s = SafeStorage.get(SESSION_KEY); if (s) sessionSiswa = JSON.parse(s); } catch (e) {}
+}
+
+/* =========================================================
+   UNIVERSAL FILE DOWNLOAD (works on iOS, macOS, Windows)
+   ========================================================= */
+async function downloadFile(blob, filename) {
+    // Strategy 1: iOS/macOS - Web Share API (iOS 15+, Safari 15+)
+    if (typeof navigator.share === 'function' && typeof navigator.canShare === 'function') {
+        try {
+            const file = new File([blob], filename, { type: blob.type || 'application/octet-stream' });
+            if (navigator.canShare({ files: [file] })) {
+                await navigator.share({
+                    files: [file],
+                    title: filename
+                });
+                return true;
+            }
+        } catch (err) {
+            // User cancelled or share failed; fall through to next strategy
+            if (err && err.name === 'AbortError') return true;
+            console.warn('Share API gagal, coba cara lain:', err);
+        }
+    }
+    
+    // Strategy 2: Standard download (Desktop Chrome, Firefox, Edge, Android)
+    try {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.style.display = 'none';
+        a.rel = 'noopener';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        return true;
+    } catch (err) {
+        console.warn('Download link gagal:', err);
+    }
+    
+    // Strategy 3: iOS fallback - open in new tab
+    try {
+        const url = URL.createObjectURL(blob);
+        const newWin = window.open(url, '_blank');
+        if (!newWin) {
+            alert('⚠️ Pop-up diblokir. Silakan izinkan pop-up untuk mengunduh file, atau gunakan tombol "Print Gabungan" lalu pilih "Simpan sebagai PDF".');
+        }
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        return true;
+    } catch (err) {
+        console.error('Semua metode download gagal:', err);
+        alert('❌ Tidak dapat mengunduh file. Coba gunakan tombol "Print Gabungan" dan pilih "Save as PDF".');
+        return false;
+    }
+}
+
+/* =========================================================
+   RENDER AKTIVITAS 1
+   ========================================================= */
+function renderAktivitas1() {
+    const container = document.getElementById('aktivitas1Container');
+    if (!container) return;
+
+    container.innerHTML = ENERGY_TYPES.map(energy => `
+        <div class="data-card ${energy.id}" style="margin-bottom:14px;">
+            <div class="data-card-header">
+                <div class="emoji">${energy.emoji}</div>
+                <h4>${energy.label}</h4>
+            </div>
+            <div style="margin-bottom:12px;">
+                <div style="font-size:12.5px;font-weight:700;color:var(--navy-800);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Penilaian Awal (1-5):</div>
+                <div class="rating-buttons" style="justify-content:flex-start;">
+                    ${[1,2,3,4,5].map(n => `
+                        <button type="button" class="rating-btn"
+                            data-energy="${energy.id}" data-value="${n}"
+                            id="rating-${energy.id}-${n}">${n}</button>
+                    `).join('')}
+                </div>
+            </div>
+            <div>
+                <div style="font-size:12.5px;font-weight:700;color:var(--navy-800);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Alasan Singkat:</div>
+                <textarea class="energy-reason" data-energy="${energy.id}"
+                    placeholder="Tuliskan alasan berdasarkan data Kota Palu..."
+                    id="alasan-${energy.id}"
+                    style="min-height:70px;background:white;border:1.5px solid rgba(212,175,55,0.4);"></textarea>
+            </div>
+        </div>
+    `).join('');
+
+    container.querySelectorAll('.rating-btn').forEach(btn => {
+        btn.addEventListener('click', handleRatingClick);
+        btn.addEventListener('touchend', function(e) {
+            // Prevent double-firing on iOS
+            e.preventDefault();
+            handleRatingClick(e);
+        }, { passive: false });
+    });
+    container.querySelectorAll('.energy-reason').forEach(ta => {
+        ta.addEventListener('input', handleEnergyReasonChange);
+        autoExpand(ta);
+    });
+
+    restoreAktivitas1();
+    updateAktivitas1Progress();
+}
+
+function handleRatingClick(e) {
+    const btn = e.currentTarget || e.target;
+    if (!btn || !btn.dataset) return;
+    const energyId = btn.dataset.energy;
+    const value = parseInt(btn.dataset.value);
+
+    document.querySelectorAll(`.rating-btn[data-energy="${energyId}"]`).forEach(b => {
+        b.classList.remove('selected');
+    });
+    btn.classList.add('selected');
+
+    if (!state.aktivitas1[energyId]) state.aktivitas1[energyId] = { rating: 0, alasan: '' };
+    state.aktivitas1[energyId].rating = value;
+
+    saveState();
+    updateAktivitas1Progress();
+}
+
+function handleEnergyReasonChange(e) {
+    const energyId = e.target.dataset.energy;
+    if (!state.aktivitas1[energyId]) state.aktivitas1[energyId] = { rating: 0, alasan: '' };
+    state.aktivitas1[energyId].alasan = e.target.value;
+    saveState();
+    updateAktivitas1Progress();
+}
+
+function restoreAktivitas1() {
+    ENERGY_TYPES.forEach(energy => {
+        const data = state.aktivitas1[energy.id] || {};
+        if (data.rating) {
+            const btn = document.querySelector(`.rating-btn[data-energy="${energy.id}"][data-value="${data.rating}"]`);
+            if (btn) btn.classList.add('selected');
+        }
+        const ta = document.querySelector(`.energy-reason[data-energy="${energy.id}"]`);
+        if (ta) ta.value = data.alasan || '';
+    });
+}
+
+function updateAktivitas1Progress() {
+    let filled = 0;
+    ENERGY_TYPES.forEach(energy => {
+        const d = state.aktivitas1[energy.id] || {};
+        if (d.rating && d.rating > 0 && d.alasan && d.alasan.trim().length >= 10) filled++;
+    });
+    const total = ENERGY_TYPES.length;
+    const persen = Math.round((filled / total) * 100);
+    const textEl = document.getElementById('akt1ProgressText');
+    const fillEl = document.getElementById('akt1ProgressFill');
+    const percentEl = document.getElementById('akt1ProgressPercent');
+    if (textEl) textEl.textContent = `${filled}/${total}`;
+    if (fillEl) fillEl.style.width = persen + '%';
+    if (percentEl) percentEl.textContent = persen + '%';
+}
+
+/* =========================================================
+   RENDER AKTIVITAS 2
+   ========================================================= */
+function renderAktivitas2() {
+    const tbody = document.getElementById('tabelKriteriaBody');
+    if (!tbody) return;
+
+    tbody.innerHTML = KRITERIA.map(kriteria => `
+        <tr>
+            <td class="kriteria-cell">${kriteria.label}</td>
+            ${ENERGY_TYPES.map(energy => `
+                <td style="text-align:center;">
+                    <select class="kriteria-select"
+                        data-kriteria="${kriteria.id}"
+                        data-energy="${energy.id}"
+                        style="width:70px;padding:8px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:16px;font-weight:600;text-align:center;color:var(--navy-700);cursor:pointer;background:white;-webkit-appearance:menulist;appearance:menulist;">
+                        <option value="0">-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+            `).join('')}
+        </tr>
+    `).join('') + `
+        <tr style="background:linear-gradient(135deg,#f0f7ff,#e0ebfa);font-weight:700;">
+            <td class="kriteria-cell" style="color:var(--navy-800);">🏆 TOTAL SKOR</td>
+            ${ENERGY_TYPES.map(energy => `
+                <td style="text-align:center;">
+                    <span class="total-skor" data-energy="${energy.id}" style="font-family:'Playfair Display',serif;font-size:18px;color:var(--navy-800);">0</span>
+                    <span style="font-size:12px;color:var(--text-muted);">/25</span>
+                </td>
+            `).join('')}
+        </tr>
+    `;
+
+    tbody.querySelectorAll('.kriteria-select').forEach(sel => {
+        sel.addEventListener('change', handleKriteriaChange);
+    });
+
+    restoreAktivitas2();
+    updateTotalSkor();
+}
+
+function handleKriteriaChange(e) {
+    const sel = e.target;
+    const kriteriaId = sel.dataset.kriteria;
+    const energyId = sel.dataset.energy;
+    const val = parseInt(sel.value);
+    if (!state.aktivitas2[energyId]) state.aktivitas2[energyId] = {};
+    state.aktivitas2[energyId][kriteriaId] = val;
+    saveState();
+    updateTotalSkor();
+}
+
+function restoreAktivitas2() {
+    ENERGY_TYPES.forEach(energy => {
+        const data = state.aktivitas2[energy.id] || {};
+        KRITERIA.forEach(kriteria => {
+            const sel = document.querySelector(`.kriteria-select[data-kriteria="${kriteria.id}"][data-energy="${energy.id}"]`);
+            if (sel && data[kriteria.id]) sel.value = data[kriteria.id];
+        });
+    });
+}
+
+function updateTotalSkor() {
+    const totals = {};
+    ENERGY_TYPES.forEach(energy => {
+        const data = state.aktivitas2[energy.id] || {};
+        let total = 0;
+        KRITERIA.forEach(k => { total += (data[k.id] || 0); });
+        totals[energy.id] = total;
+        const el = document.querySelector(`.total-skor[data-energy="${energy.id}"]`);
+        if (el) el.textContent = total;
+    });
+
+    const peringkat = ENERGY_TYPES.map(e => ({ ...e, total: totals[e.id] || 0 })).sort((a, b) => b.total - a.total);
+    const container = document.getElementById('peringkatContainer');
+    if (container) {
+        const maxTotal = peringkat[0]?.total || 0;
+        container.innerHTML = peringkat.map((e, idx) => {
+            const isTop = idx === 0 && maxTotal > 0;
+            const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `#${idx + 1}`;
+            return `
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:${isTop ? 'linear-gradient(135deg,#d4af37,#e6c458)' : 'white'};color:${isTop ? 'var(--navy-900)' : 'var(--navy-700)'};border:1.5px solid ${isTop ? '#d4af37' : 'var(--border)'};border-radius:100px;font-size:13px;font-weight:600;">
+                    <span>${medal}</span>
+                    <span>${e.emoji} ${e.label}</span>
+                    <span style="font-family:'Playfair Display',serif;font-size:15px;">${e.total}</span>
+                </div>
+            `;
+        }).join('');
+    }
+}
+
+/* =========================================================
+   NAVIGASI
+   ========================================================= */
+const navItems = document.querySelectorAll('.nav-item');
+const pages = document.querySelectorAll('.page');
+const breadcrumbText = document.getElementById('breadcrumb-text');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const hamburger = document.getElementById('hamburger');
+
+const pageTitles = {
+    home: 'Halaman Depan', materi: 'Materi', referensi: 'Data Kota Palu',
+    lkpd: 'LKPD', kuis: 'Kuis (10 Soal)', refleksi: 'Refleksi',
+    guru: 'Panel Guru', rekap: 'Rekap Nilai'
+};
+
+function navigateTo(target) {
+    navItems.forEach(n => n.classList.toggle('active', n.dataset.page === target));
+    pages.forEach(p => p.classList.remove('active'));
+    const tp = document.getElementById('page-' + target);
+    if (tp) tp.classList.add('active');
+    if (breadcrumbText) breadcrumbText.textContent = pageTitles[target] || 'Halaman';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.innerWidth <= 900) closeSidebar();
+    if (target === 'kuis') renderKuisPage();
+    if (target === 'guru') muatDataGuru();
+    if (target === 'rekap') muatRekap();
+}
+
+navItems.forEach(item => item.addEventListener('click', () => navigateTo(item.dataset.page)));
+function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('show'); document.body.style.overflow = 'hidden'; }
+function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('show'); document.body.style.overflow = ''; }
+if (hamburger) hamburger.addEventListener('click', openSidebar);
+if (overlay) overlay.addEventListener('click', closeSidebar);
+
+/* =========================================================
+   UTILITAS
+   ========================================================= */
+function autoExpand(el) {
+    if (!el || el.tagName !== 'TEXTAREA') return;
+    el.style.height = 'auto';
+    const newHeight = Math.max(el.scrollHeight + 4, 70);
+    el.style.height = newHeight + 'px';
+}
+
+function escapeHtml(t) {
+    const d = document.createElement('div');
+    d.textContent = t;
+    return d.innerHTML;
+}
+
+// Radio handler with iOS support
+document.addEventListener('change', e => {
+    if (e.target.type === 'radio' && e.target.name && e.target.name.startsWith('k')) {
+        const name = e.target.name;
+        document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+            r.closest('.option')?.classList.remove('selected');
+        });
+        e.target.closest('.option')?.classList.add('selected');
+        const val = e.target.value;
+        state.kuisDraft = state.kuisDraft || {};
+        state.kuisDraft[name] = val;
+        saveState();
+    }
+});
+
+document.addEventListener('input', e => {
+    if (e.target.tagName === 'TEXTAREA') autoExpand(e.target);
+});
+
+// iOS: force auto-expand on load
+window.addEventListener('load', () => {
+    document.querySelectorAll('textarea').forEach(autoExpand);
+});
+
+/* =========================================================
+   KELOMPOK & ANGGOTA
+   ========================================================= */
+function addAnggota(nama = '') {
+    if (state.kelompok.anggota.length >= CFG.maxAnggota) {
+        alert(`Maksimal ${CFG.maxAnggota} anggota per kelompok.`);
+        return;
+    }
+    state.kelompok.anggota.push(nama);
+    saveState();
+    renderAnggota();
+}
+
+function removeAnggota(index) {
+    state.kelompok.anggota.splice(index, 1);
+    saveState();
+    renderAnggota();
+    updateTTDKetua();
+}
+
+function renderAnggota() {
+    const container = document.getElementById('anggotaList');
+    if (!container) return;
+    if (state.kelompok.anggota.length === 0) {
+        container.innerHTML = `<p style="font-size:13px;color:var(--text-muted);font-style:italic;padding:8px 0;">Belum ada anggota. Klik "+ Tambah Anggota".</p>`;
+        return;
+    }
+    container.innerHTML = state.kelompok.anggota.map((nama, idx) => `
+        <div class="anggota-item">
+            <div class="anggota-num">${idx + 1}</div>
+            <input type="text" value="${escapeHtml(nama)}"
+                oninput="updateAnggota(${idx}, this.value)"
+                placeholder="Nama anggota ${idx + 1}"
+                autocomplete="off">
+            <button type="button" class="anggota-remove" onclick="removeAnggota(${idx})" title="Hapus" aria-label="Hapus">✕</button>
+        </div>
+    `).join('');
+
+    const btn = document.getElementById('btnAddAnggota');
+    if (btn) {
+        btn.disabled = state.kelompok.anggota.length >= CFG.maxAnggota;
+        btn.style.opacity = btn.disabled ? '0.5' : '1';
+    }
+}
+
+function updateAnggota(idx, val) {
+    state.kelompok.anggota[idx] = val;
+    saveState();
+    updateTTDKetua();
+}
+
+function updateTTDKetua() {
+    const el = document.getElementById('ttdKetua');
+    if (!el) return;
+    const ketua = state.kelompok.anggota.filter(a => a && a.trim())[0];
+    el.textContent = ketua ? ketua.trim() : '___________________';
+}
+
+/* =========================================================
+   SIMPAN & RESET LKPD
+   ========================================================= */
+function simpanLKPD() {
+    document.querySelectorAll('[data-lkpd]').forEach(el => {
+        const key = el.dataset.lkpd;
+        if (!state.lkpd) state.lkpd = {};
+        state.lkpd[key] = el.value;
+    });
+    state.kelompok.nama = document.getElementById('inputKelompok')?.value || '';
+    state.kelompok.kelas = document.getElementById('inputKelas')?.value || '';
+    saveState();
+    alert('✅ Jawaban LKPD berhasil disimpan!');
+}
+
+function resetLKPD() {
+    if (!confirm('Yakin ingin mereset semua jawaban LKPD (Aktivitas 3 & 4)? Aktivitas 1 & 2 tetap tersimpan.')) return;
+    ['keputusan','arg1','arg2','arg3','kekurangan','rekomendasi','langkah','ref1','ref2','ref3','ref4'].forEach(k => {
+        if (state.lkpd) delete state.lkpd[k];
+        const el = document.querySelector(`[data-lkpd="${k}"]`);
+        if (el) el.value = '';
+    });
+    state.refleksi = { mood: null, jawaban: {} };
+    saveState();
+    syncJawabanText();
+    alert('🔄 LKPD berhasil direset.');
+}
+
+/* =========================================================
+   SINKRONISASI
+   ========================================================= */
+function syncJawabanText() {
+    document.querySelectorAll('[data-lkpd]').forEach(el => {
+        const key = el.dataset.lkpd;
+        const display = document.querySelector(`[data-jawaban="${key}"]`);
+        if (!display) return;
+        const val = (el.value || '').trim();
+        if (val) {
+            display.textContent = val;
+            display.classList.remove('empty');
+        } else {
+            display.textContent = 'Belum diisi';
+            display.classList.add('empty');
+        }
+    });
+}
+
+document.addEventListener('input', e => {
+    if (e.target.dataset && e.target.dataset.lkpd) {
+        const key = e.target.dataset.lkpd;
+        if (!state.lkpd) state.lkpd = {};
+        state.lkpd[key] = e.target.value;
+        saveState();
+        syncJawabanText();
+    }
+    if (e.target.id === 'inputKelompok') { state.kelompok.nama = e.target.value; saveState(); }
+    if (e.target.id === 'inputKelas') { state.kelompok.kelas = e.target.value; saveState(); }
+});
+
+function restoreLKPD() {
+    if (state.lkpd) {
+        Object.keys(state.lkpd).forEach(key => {
+            const el = document.querySelector(`[data-lkpd="${key}"]`);
+            if (el) el.value = state.lkpd[key] || '';
+        });
+    }
+    const elNama = document.getElementById('inputKelompok');
+    const elKelas = document.getElementById('inputKelas');
+    if (elNama && state.kelompok.nama) elNama.value = state.kelompok.nama;
+    if (elKelas && state.kelompok.kelas) elKelas.value = state.kelompok.kelas;
+    syncJawabanText();
+}
+
+/* =========================================================
+   TIMER
+   ========================================================= */
+function startTimer() {
+    if (!state.waktuMulai) {
+        state.waktuMulai = Date.now();
+        saveState();
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+}
+
+function updateTimer() {
+    const el = document.getElementById('inputWaktu');
+    if (!el || !state.waktuMulai) return;
+    const elapsed = Math.floor((Date.now() - state.waktuMulai) / 1000);
+    const h = String(Math.floor(elapsed / 3600)).padStart(2, '0');
+    const m = String(Math.floor((elapsed % 3600) / 60)).padStart(2, '0');
+    const s = String(elapsed % 60).padStart(2, '0');
+    el.value = `${h}:${m}:${s}`;
+}
+
+function setTanggalHariIni() {
+    const el = document.getElementById('inputTanggal');
+    if (!el) return;
+    const d = new Date();
+    const hari = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][d.getDay()];
+    const bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'][d.getMonth()];
+    el.value = `${hari}, ${d.getDate()} ${bulan} ${d.getFullYear()}`;
+}
+
+/* =========================================================
+   KUIS
+   ========================================================= */
+function renderKuisPage() {
+    loadSession();
+    if (sessionSiswa && sessionSiswa.submitted) {
+        document.getElementById('kuisLoginSection').style.display = 'none';
+        document.getElementById('kuisFormSection').style.display = 'none';
+        document.getElementById('kuisLockedSection').style.display = 'block';
+        document.getElementById('lockedNama').textContent = sessionSiswa.nama || '-';
+        document.getElementById('lockedWaktu').textContent = sessionSiswa.waktuSubmit || '-';
+        const nilai = sessionSiswa.skor * 10;
+        document.getElementById('lockedSkor').textContent = `${sessionSiswa.skor || 0}/10 (Nilai: ${nilai})`;
+        updateUserBadge();
+        return;
+    }
+    if (sessionSiswa) {
+        document.getElementById('kuisLoginSection').style.display = 'none';
+        document.getElementById('kuisFormSection').style.display = 'block';
+        document.getElementById('kuisLockedSection').style.display = 'none';
+        document.getElementById('kuisNamaSiswa').textContent = sessionSiswa.nama || '-';
+        restoreKuisDraft();
+        updateUserBadge();
+        return;
+    }
+    document.getElementById('kuisLoginSection').style.display = 'block';
+    document.getElementById('kuisFormSection').style.display = 'none';
+    document.getElementById('kuisLockedSection').style.display = 'none';
+    updateUserBadge();
+}
+
+function updateUserBadge() {
+    const av = document.getElementById('userAvatar');
+    const nm = document.getElementById('userName');
+    if (!av || !nm) return;
+    if (sessionSiswa) {
+        const nama = sessionSiswa.nama || '?';
+        av.textContent = nama.substring(0, 1).toUpperCase();
+        nm.textContent = nama.length > 18 ? nama.substring(0, 18) + '…' : nama;
+    } else {
+        av.textContent = '?';
+        nm.textContent = 'Belum Login';
+    }
+}
+
+function loginSiswa() {
+    const nama = document.getElementById('loginNama').value.trim();
+    const kelas = document.getElementById('loginKelas').value.trim();
+    const absen = document.getElementById('loginAbsen').value.trim();
+    const errEl = document.getElementById('loginError');
+    if (!nama || !kelas || !absen) {
+        errEl.textContent = '⚠️ Semua kolom harus diisi!';
+        errEl.classList.add('show');
+        return;
+    }
+    const db = loadSiswaDB();
+    const key = `${nama.toLowerCase()}_${kelas.toLowerCase()}_${absen}`;
+    if (db[key]) {
+        errEl.textContent = `⚠️ Siswa dengan nama "${nama}" sudah mengerjakan kuis. Setiap siswa hanya boleh sekali.`;
+        errEl.classList.add('show');
+        return;
+    }
+    errEl.classList.remove('show');
+    sessionSiswa = {
+        nama, kelas, absen,
+        submitted: false, skor: 0,
+        waktuLogin: new Date().toLocaleString('id-ID'),
+        waktuSubmit: null, jawaban: {}
+    };
+    saveSession();
+    renderKuisPage();
+}
+
+function restoreKuisDraft() {
+    if (!state.kuisDraft) return;
+    Object.keys(state.kuisDraft).forEach(name => {
+        const val = state.kuisDraft[name];
+        const radio = document.querySelector(`input[name="${name}"][value="${val}"]`);
+        if (radio) {
+            radio.checked = true;
+            radio.closest('.option')?.classList.add('selected');
+        }
+    });
+}
+
+function simpanKuis() {
+    if (!sessionSiswa || sessionSiswa.submitted) return;
+    state.kuisDraft = state.kuisDraft || {};
+    document.querySelectorAll('input[type="radio"][name^="k"]:checked').forEach(r => {
+        state.kuisDraft[r.name] = r.value;
+    });
+    saveState();
+    alert('💾 Pilihan kuis berhasil disimpan sebagai draft.');
+}
+
+function resetKuisBeforeSubmit() {
+    if (!confirm('Reset semua pilihan kuis?')) return;
+    state.kuisDraft = {};
+    saveState();
+    document.querySelectorAll('input[type="radio"][name^="k"]').forEach(r => {
+        r.checked = false;
+        r.closest('.option')?.classList.remove('selected', 'correct', 'wrong');
+    });
+    document.querySelectorAll('.feedback').forEach(f => {
+        f.classList.remove('show', 'correct', 'wrong');
+        f.textContent = '';
+    });
+}
+
+const KUNCI_KUIS = { k1:'C', k2:'B', k3:'B', k4:'C', k5:'A', k6:'B', k7:'C', k8:'B', k9:'C', k10:'D' };
+
+const PEMBAHASAN = {
+    k1: 'Data Kota Palu menunjukkan radiasi matahari 5,43 kWh/m²/hari (di atas rata-rata nasional 4,8).',
+    k2: 'Kecepatan angin onshore 3,6 m/s hanya sedikit di atas batas minimum turbin (3 m/s), sehingga kurang optimal.',
+    k3: 'PLTA Poso berkapasitas 515 MW memasok listrik untuk 4 provinsi dan berjarak ±100 km dari Kota Palu.',
+    k4: 'El Nino menyebabkan penurunan debit air Sungai Poso sehingga pasokan listrik berkurang.',
+    k5: 'Proyek biogas di TPA Kawatuna dikembangkan bekerja sama dengan Jepang.',
+    k6: 'Potensi panas bumi di Kabupaten Sigi (prospek Kadidia) adalah 14 MWe.',
+    k7: 'Kebutuhan listrik Kota Palu tahun 2025 mencapai 713 GWh (proyeksi 2034: 2.110 GWh).',
+    k8: 'Radiasi tinggi (5,43 kWh/m²/hari), payback period singkat (5–6 tahun), dan umur panel 25 tahun membuat surya sangat prospektif.',
+    k9: '2.110 / 713 ≈ 2,96 → sekitar 3 kali lipat kenaikan.',
+    k10: 'Surya paling efektif untuk kawasan perkotaan: tidak perlu lahan luas (bisa di atap), radiasi tinggi, payback period singkat, dan ramah lingkungan.'
+};
+
+function cekKuisDanSubmit() {
+    if (!sessionSiswa || sessionSiswa.submitted) return;
+    const total = 10;
+    const belumDijawab = [];
+    const jawaban = {};
+    let skor = 0;
+    for (let i = 1; i <= total; i++) {
+        const name = 'k' + i;
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        if (!checked) belumDijawab.push(i);
+        else {
+            jawaban[name] = checked.value;
+            if (checked.value === KUNCI_KUIS[name]) skor++;
+        }
+    }
+    if (belumDijawab.length > 0) {
+        alert(`⚠️ Anda belum menjawab soal: ${belumDijawab.join(', ')}.`);
+        return;
+    }
+    if (!confirm('Kirim jawaban FINAL? Setelah submit, kuis tidak dapat diubah lagi.')) return;
+
+    for (let i = 1; i <= total; i++) {
+        const name = 'k' + i;
+        const val = jawaban[name];
+        const correct = val === KUNCI_KUIS[name];
+        document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+            const lbl = r.closest('.option');
+            lbl.classList.remove('selected');
+            if (r.value === KUNCI_KUIS[name]) lbl.classList.add('correct');
+            else if (r.value === val && !correct) lbl.classList.add('wrong');
+        });
+        const fb = document.getElementById('fb-' + name);
+        if (fb) {
+            fb.classList.add('show', correct ? 'correct' : 'wrong');
+            fb.innerHTML = correct
+                ? `✅ <strong>Benar!</strong> ${PEMBAHASAN[name]}`
+                : `❌ <strong>Kurang tepat.</strong> Jawaban benar: <strong>${KUNCI_KUIS[name]}</strong>. ${PEMBAHASAN[name]}`;
+        }
+    }
+
+    sessionSiswa.submitted = true;
+    sessionSiswa.skor = skor;
+    sessionSiswa.jawaban = jawaban;
+    sessionSiswa.waktuSubmit = new Date().toLocaleString('id-ID');
+    saveSession();
+
+    const db = loadSiswaDB();
+    const key = `${sessionSiswa.nama.toLowerCase()}_${sessionSiswa.kelas.toLowerCase()}_${sessionSiswa.absen}`;
+    db[key] = {
+        nama: sessionSiswa.nama,
+        kelas: sessionSiswa.kelas,
+        absen: sessionSiswa.absen,
+        skor: skor,
+        jawaban: jawaban,
+        waktuSubmit: sessionSiswa.waktuSubmit
+    };
+    saveSiswaDB(db);
+
+    const nilai = skor * 10;
+    const resultBox = document.getElementById('resultKuis');
+    resultBox.style.display = 'block';
+    resultBox.style.background = nilai >= CFG.kkm ? 'linear-gradient(135deg,#e0f5ee,#c7ebd9)' : 'linear-gradient(135deg,#fde4ec,#fbd5d5)';
+    document.getElementById('scoreKuis').textContent = `${skor}/${total}`;
+    document.getElementById('titleKuis').textContent = nilai >= CFG.kkm ? `🎉 TUNTAS! Nilai Anda: ${nilai}` : `📚 Belum Tuntas. Nilai Anda: ${nilai} (KKM ${CFG.kkm})`;
+    document.getElementById('msgKuis').innerHTML = nilai >= CFG.kkm
+        ? '<p style="font-size:13.5px;color:#0d5a44;">Selamat! Lanjutkan ke Refleksi dan unduh PDF.</p>'
+        : '<p style="font-size:13.5px;color:#7a0d29;">Pelajari kembali Materi & Data Kota Palu.</p>';
+    document.getElementById('btnSubmitKuis').disabled = true;
+    document.getElementById('btnSubmitKuis').textContent = '🔒 Sudah Disubmit';
+    alert(`✅ Kuis selesai! Skor Anda: ${skor}/${total} (Nilai: ${nilai}).`);
+    updateUserBadge();
+}
+
+/* =========================================================
+   EXPORT PDF GABUNGAN
+   ========================================================= */
+function buildKuisSectionForPDF() {
+    const el = document.getElementById('pdfKuisSection');
+    if (!el) return;
+    if (!sessionSiswa || !sessionSiswa.submitted) {
+        el.innerHTML = `
+            <div class="card" style="border:1px solid #cbd5e0;">
+                <div style="text-align:center;padding:30px;">
+                    <div style="font-size:38px;margin-bottom:10px;">📝</div>
+                    <h3 style="color:#16294f;margin-bottom:8px;">Kuis Belum Dikerjakan</h3>
+                    <p style="color:#64748b;font-size:13.5px;">Kerjakan kuis terlebih dahulu pada menu "Kuis (10 Soal)".</p>
+                </div>
+            </div>`;
+        return;
+    }
+    const nilai = sessionSiswa.skor * 10;
+    const status = nilai >= CFG.kkm ? 'TUNTAS' : 'BELUM TUNTAS';
+    let jawabanHtml = '';
+    for (let i = 1; i <= 10; i++) {
+        const name = 'k' + i;
+        const val = sessionSiswa.jawaban?.[name] || '-';
+        const benar = val === KUNCI_KUIS[name];
+        jawabanHtml += `
+            <tr>
+                <td style="text-align:center;font-weight:700;">${i}</td>
+                <td style="text-align:center;font-weight:700;">${val}</td>
+                <td style="text-align:center;font-weight:700;">${KUNCI_KUIS[name]}</td>
+                <td style="text-align:center;">
+                    <span style="display:inline-block;padding:2px 8px;border-radius:100px;font-size:10.5px;font-weight:700;background:${benar ? '#d1f0e0' : '#fbd5d5'};color:${benar ? '#166534' : '#991b1b'};">
+                        ${benar ? '✓ Benar' : '✗ Salah'}
+                    </span>
+                </td>
+            </tr>`;
+    }
+    el.innerHTML = `
+        <div class="card" style="border:1px solid #cbd5e0;">
+            <div style="background:linear-gradient(135deg,#16294f,#0a1428);color:white;padding:18px 22px;border-radius:10px;margin-bottom:18px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+                    <div>
+                        <div style="font-size:12px;color:#e6c458;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;">Hasil Kuis Individu</div>
+                        <div style="font-size:18px;font-weight:700;margin-top:4px;">${escapeHtml(sessionSiswa.nama)}</div>
+                        <div style="font-size:12.5px;color:rgba(255,255,255,0.8);">Kelas ${escapeHtml(sessionSiswa.kelas)} · Absen ${escapeHtml(sessionSiswa.absen)}</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-family:'Playfair Display',serif;font-size:32px;color:#e6c458;font-weight:700;">${nilai}</div>
+                        <div style="font-size:11px;color:rgba(255,255,255,0.8);">Skor: ${sessionSiswa.skor}/10</div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+                <div style="flex:1;min-width:180px;padding:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+                    <div style="font-size:11px;color:#64748b;text-transform:uppercase;font-weight:700;">Waktu Submit</div>
+                    <div style="font-size:13.5px;color:#16294f;font-weight:600;margin-top:4px;">${sessionSiswa.waktuSubmit || '-'}</div>
+                </div>
+                <div style="flex:1;min-width:180px;padding:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+                    <div style="font-size:11px;color:#64748b;text-transform:uppercase;font-weight:700;">Status</div>
+                    <div style="margin-top:4px;">
+                        <span style="display:inline-block;padding:3px 12px;border-radius:100px;font-size:11.5px;font-weight:700;background:${nilai >= CFG.kkm ? '#d1f0e0' : '#fbd5d5'};color:${nilai >= CFG.kkm ? '#166534' : '#991b1b'};">${status}</span>
+                    </div>
+                </div>
+                <div style="flex:1;min-width:180px;padding:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;">
+                    <div style="font-size:11px;color:#64748b;text-transform:uppercase;font-weight:700;">KKM</div>
+                    <div style="font-size:13.5px;color:#16294f;font-weight:600;margin-top:4px;">${CFG.kkm}</div>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table" style="width:100%;table-layout:fixed;min-width:unset;">
+                    <thead>
+                        <tr>
+                            <th style="width:12%;text-align:center;">No</th>
+                            <th style="width:22%;text-align:center;">Jawaban</th>
+                            <th style="width:22%;text-align:center;">Kunci</th>
+                            <th style="width:44%;text-align:center;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>${jawabanHtml}</tbody>
+                </table>
+            </div>
+        </div>`;
+}
+
+async function exportToPDF(event) {
+    if (typeof html2pdf === 'undefined') {
+        alert('⚠️ Library PDF belum termuat. Periksa koneksi internet Anda, lalu coba lagi.');
+        return;
+    }
+    syncJawabanText();
+    buildKuisSectionForPDF();
+    const btn = event?.target;
+    const originalText = btn?.innerHTML;
+    if (btn) { btn.disabled = true; btn.innerHTML = '⏳ Menyiapkan PDF...'; }
+
+    const pdfKelompok = document.getElementById('pdfKelompok');
+    const pdfKelas = document.getElementById('pdfKelas');
+    const pdfAnggota = document.getElementById('pdfAnggota');
+    const pdfTanggal = document.getElementById('pdfTanggal');
+    const pdfNamaSiswa = document.getElementById('pdfNamaSiswa');
+    const pdfSkorKuis = document.getElementById('pdfSkorKuis');
+
+    if (pdfKelompok) pdfKelompok.textContent = state.kelompok.nama || '—';
+    if (pdfKelas) pdfKelas.textContent = state.kelompok.kelas || '—';
+    if (pdfAnggota) {
+        const list = state.kelompok.anggota.filter(a => a && a.trim());
+        pdfAnggota.textContent = list.length ? list.join(', ') : '—';
+    }
+    if (pdfTanggal) {
+        const el = document.getElementById('inputTanggal');
+        pdfTanggal.textContent = el?.value || new Date().toLocaleDateString('id-ID');
+    }
+    if (pdfNamaSiswa) {
+        pdfNamaSiswa.textContent = sessionSiswa?.nama ? `${sessionSiswa.nama} (${sessionSiswa.kelas}, Absen ${sessionSiswa.absen})` : '—';
+    }
+    if (pdfSkorKuis) {
+        if (sessionSiswa?.submitted) {
+            const nilai = sessionSiswa.skor * 10;
+            pdfSkorKuis.textContent = `${sessionSiswa.skor}/10 (Nilai: ${nilai})`;
+        } else {
+            pdfSkorKuis.textContent = 'Belum dikerjakan';
+        }
+    }
+
+    const area = document.getElementById('lkpdExportArea');
+    const clone = area.cloneNode(true);
+    clone.querySelectorAll('textarea').forEach(el => el.remove());
+    clone.querySelectorAll('.anggota-remove, .btn, .btn-group, .export-panel, .save-toolbar, .rating-btn, .kriteria-select').forEach(el => {
+        el.style.display = 'none';
+    });
+
+    const originalSelects = area.querySelectorAll('.kriteria-select');
+    const cloneSelects = clone.querySelectorAll('.kriteria-select');
+    cloneSelects.forEach((sel, idx) => {
+        const orig = originalSelects[idx];
+        const val = orig ? orig.value : '0';
+        const span = document.createElement('span');
+        span.style.cssText = 'display:inline-block;padding:4px 12px;background:#f0f7ff;border:1px solid #cbd5e0;border-radius:8px;font-weight:700;color:#16294f;font-size:13px;';
+        span.textContent = (val && val !== '0') ? val : '-';
+        sel.parentNode.replaceChild(span, sel);
+    });
+
+    clone.querySelectorAll('.rating-buttons').forEach(group => {
+        const btns = group.querySelectorAll('.rating-btn');
+        let chosen = '—';
+        btns.forEach(b => { if (b.classList.contains('selected')) chosen = b.textContent; });
+        const div = document.createElement('div');
+        div.style.cssText = 'display:inline-block;padding:6px 16px;background:linear-gradient(135deg,#16294f,#0a1428);color:#e6c458;border-radius:10px;font-weight:700;font-size:14px;';
+        div.textContent = `Nilai: ${chosen} / 5`;
+        group.parentNode.replaceChild(div, group);
+    });
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'pdf-mode';
+    wrapper.style.cssText = 'background:white;padding:20px;font-family:Inter,Segoe UI,sans-serif;color:#0f1e3d;';
+    wrapper.appendChild(clone);
+
+    const now = new Date();
+    const stamp = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
+    const namaFile = `LKPD_Energi_Palu_${(state.kelompok.nama || 'Kelompok').replace(/[^a-zA-Z0-9]/g,'_')}_${stamp}.pdf`;
+
+    const opt = {
+        margin: [8, 8, 12, 8],
+        filename: namaFile,
+        image: { type: 'jpeg', quality: 0.95 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', scrollY: 0, windowWidth: 900, logging: false },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['.card', '.quiz-item', '.reflection-item', '.data-card', '.pdf-section-title'] }
+    };
+
+    try {
+        const pdfBlob = await html2pdf().set(opt).from(wrapper).outputPdf('blob');
+        await downloadFile(pdfBlob, namaFile);
+    } catch (err) {
+        console.error(err);
+        alert('❌ Gagal membuat PDF: ' + (err.message || err));
+    } finally {
+        if (btn) { btn.disabled = false; btn.innerHTML = originalText; }
+    }
+}
+
+function printLKPD() {
+    syncJawabanText();
+    buildKuisSectionForPDF();
+
+    const pdfKelompok = document.getElementById('pdfKelompok');
+    const pdfKelas = document.getElementById('pdfKelas');
+    const pdfAnggota = document.getElementById('pdfAnggota');
+    const pdfTanggal = document.getElementById('pdfTanggal');
+    const pdfNamaSiswa = document.getElementById('pdfNamaSiswa');
+    const pdfSkorKuis = document.getElementById('pdfSkorKuis');
+
+    if (pdfKelompok) pdfKelompok.textContent = state.kelompok.nama || '—';
+    if (pdfKelas) pdfKelas.textContent = state.kelompok.kelas || '—';
+    if (pdfAnggota) {
+        const list = state.kelompok.anggota.filter(a => a && a.trim());
+        pdfAnggota.textContent = list.length ? list.join(', ') : '—';
+    }
+    if (pdfTanggal) pdfTanggal.textContent = document.getElementById('inputTanggal')?.value || '—';
+    if (pdfNamaSiswa) pdfNamaSiswa.textContent = sessionSiswa?.nama ? `${sessionSiswa.nama} (${sessionSiswa.kelas})` : '—';
+    if (pdfSkorKuis) pdfSkorKuis.textContent = sessionSiswa?.submitted ? `${sessionSiswa.skor}/10` : '—';
+
+    const area = document.getElementById('lkpdExportArea');
+    area.classList.add('pdf-mode');
+    // Small delay for iOS to render styles before print
+    setTimeout(() => {
+        try { window.print(); } catch (e) { alert('Print tidak didukung di browser ini.'); }
+        setTimeout(() => area.classList.remove('pdf-mode'), 800);
+    }, 200);
+}
+
+/* =========================================================
+   PANEL GURU & REKAP
+   ========================================================= */
+function muatDataGuru() {
+    const db = loadSiswaDB();
+    const list = Object.values(db);
+    document.getElementById('guruTotalSiswa').textContent = list.length;
+    if (list.length === 0) {
+        document.getElementById('guruRataKuis').textContent = 'Belum ada data';
+        document.getElementById('guruNilaiMax').textContent = 'Belum ada data';
+        document.getElementById('guruNilaiMin').textContent = 'Belum ada data';
+        return;
+    }
+    const nilaiArr = list.map(s => s.skor * 10);
+    const rata = (nilaiArr.reduce((a,b) => a+b, 0) / nilaiArr.length).toFixed(1);
+    document.getElementById('guruRataKuis').textContent = rata;
+    document.getElementById('guruNilaiMax').textContent = Math.max(...nilaiArr);
+    document.getElementById('guruNilaiMin').textContent = Math.min(...nilaiArr);
+}
+
+function muatRekap() {
+    const db = loadSiswaDB();
+    const list = Object.values(db).sort((a,b) => {
+        if (a.kelas !== b.kelas) return a.kelas.localeCompare(b.kelas);
+        return (parseInt(a.absen) || 0) - (parseInt(b.absen) || 0);
+    });
+    document.getElementById('rekapTotal').textContent = list.length;
+    if (list.length === 0) {
+        document.getElementById('rekapRata').textContent = '0';
+        document.getElementById('rekapMax').textContent = '0';
+        document.getElementById('rekapTuntas').textContent = '0';
+        document.getElementById('rekapTableContainer').innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px 0;">Belum ada data siswa.</p>';
+        return;
+    }
+    const nilaiArr = list.map(s => s.skor * 10);
+    const rata = (nilaiArr.reduce((a,b) => a+b, 0) / nilaiArr.length).toFixed(1);
+    const max = Math.max(...nilaiArr);
+    const tuntas = nilaiArr.filter(n => n >= CFG.kkm).length;
+    document.getElementById('rekapRata').textContent = rata;
+    document.getElementById('rekapMax').textContent = max;
+    document.getElementById('rekapTuntas').textContent = `${tuntas} / ${list.length}`;
+
+    const rows = list.map((s, i) => {
+        const nilai = s.skor * 10;
+        const lulus = nilai >= CFG.kkm;
+        return `
+            <tr>
+                <td style="text-align:center;">${i+1}</td>
+                <td>${escapeHtml(s.nama)}</td>
+                <td style="text-align:center;">${escapeHtml(s.kelas)}</td>
+                <td style="text-align:center;">${escapeHtml(s.absen)}</td>
+                <td style="text-align:center;font-weight:700;">${s.skor}/10</td>
+                <td style="text-align:center;font-weight:700;">${nilai}</td>
+                <td style="text-align:center;">
+                    <span class="badge ${lulus ? 'badge-success' : 'badge-danger'}">${lulus ? '✓ Tuntas' : '✗ Remedial'}</span>
+                </td>
+                <td style="font-size:11.5px;color:var(--text-muted);">${s.waktuSubmit || '-'}</td>
+            </tr>`;
+    }).join('');
+
+    document.getElementById('rekapTableContainer').innerHTML = `
+        <div class="table-wrapper">
+            <table class="data-table" style="width:100%;min-width:700px;">
+                <thead>
+                    <tr>
+                        <th style="width:5%;text-align:center;">No</th>
+                        <th style="width:22%;">Nama</th>
+                        <th style="width:10%;text-align:center;">Kelas</th>
+                        <th style="width:8%;text-align:center;">Absen</th>
+                        <th style="width:10%;text-align:center;">Skor</th>
+                        <th style="width:10%;text-align:center;">Nilai</th>
+                        <th style="width:15%;text-align:center;">Status</th>
+                        <th style="width:20%;">Waktu Submit</th>
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>`;
+}
+
+async function exportRekapPDF() {
+    if (typeof html2pdf === 'undefined') {
+        alert('⚠️ Library PDF belum termuat. Periksa koneksi internet Anda, lalu coba lagi.');
+        return;
+    }
+    const db = loadSiswaDB();
+    const list = Object.values(db).sort((a,b) => {
+        if (a.kelas !== b.kelas) return a.kelas.localeCompare(b.kelas);
+        return (parseInt(a.absen) || 0) - (parseInt(b.absen) || 0);
+    });
+    if (list.length === 0) { alert('⚠️ Belum ada data siswa untuk direkap.'); return; }
+    const nilaiArr = list.map(s => s.skor * 10);
+    const rata = (nilaiArr.reduce((a,b) => a+b, 0) / nilaiArr.length).toFixed(1);
+    const max = Math.max(...nilaiArr);
+    const tuntas = nilaiArr.filter(n => n >= CFG.kkm).length;
+    const persenTuntas = Math.round((tuntas / list.length) * 100);
+    const now = new Date();
+    const tanggalStr = now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
+    const jamStr = now.toLocaleTimeString('id-ID');
+
+    const rows = list.map((s, i) => {
+        const nilai = s.skor * 10;
+        const lulus = nilai >= CFG.kkm;
+        return `
+            <tr>
+                <td style="text-align:center;">${i+1}</td>
+                <td>${escapeHtml(s.nama)}</td>
+                <td style="text-align:center;">${escapeHtml(s.kelas)}</td>
+                <td style="text-align:center;">${escapeHtml(s.absen)}</td>
+                <td style="text-align:center;font-weight:700;">${s.skor}/10</td>
+                <td style="text-align:center;font-weight:700;">${nilai}</td>
+                <td style="text-align:center;">
+                    <span class="status-badge ${lulus ? 'status-lulus' : 'status-remedial'}">${lulus ? 'TUNTAS' : 'REMEDIAL'}</span>
+                </td>
+            </tr>`;
+    }).join('');
+
+    const html = `
+        <div class="rekap-pdf-content">
+            <div class="rekap-pdf-header">
+                <div class="logo">⚡</div>
+                <h1>REKAPITULASI NILAI KUIS</h1>
+                <h2>Energi Terbarukan Kota Palu — Fisika Fase E</h2>
+                <p><strong>${CFG.namaSekolah}</strong></p>
+                <p>Tahun Ajaran ${CFG.tahunAjaran} · KKM: ${CFG.kkm}</p>
+            </div>
+            <div class="rekap-pdf-info">
+                <div class="item"><strong>Mata Pelajaran:</strong> ${CFG.mataPelajaran}</div>
+                <div class="item"><strong>Kelas/Fase:</strong> ${CFG.kelas} / ${CFG.fase}</div>
+                <div class="item"><strong>Guru:</strong> ${CFG.namaGuru}</div>
+                <div class="item"><strong>Tanggal Cetak:</strong> ${tanggalStr} ${jamStr}</div>
+            </div>
+            <div class="rekap-pdf-stats">
+                <div class="rekap-pdf-stat"><div class="value">${list.length}</div><div class="label">Total Peserta</div></div>
+                <div class="rekap-pdf-stat"><div class="value">${rata}</div><div class="label">Rata-rata</div></div>
+                <div class="rekap-pdf-stat"><div class="value">${max}</div><div class="label">Tertinggi</div></div>
+                <div class="rekap-pdf-stat"><div class="value">${persenTuntas}%</div><div class="label">Tuntas KKM</div></div>
+            </div>
+            <table class="rekap-pdf-table">
+                <thead>
+                    <tr>
+                        <th style="width:5%;text-align:center;">No</th>
+                        <th style="width:30%;">Nama Siswa</th>
+                        <th style="width:10%;text-align:center;">Kelas</th>
+                        <th style="width:8%;text-align:center;">Absen</th>
+                        <th style="width:12%;text-align:center;">Skor</th>
+                        <th style="width:10%;text-align:center;">Nilai</th>
+                        <th style="width:25%;text-align:center;">Status</th>
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>
+            <div class="rekap-pdf-footer">
+                <div>Dicetak dari LKPD Digital — Energi Terbarukan Kota Palu</div>
+                <div>${CFG.namaSekolah} · ${tanggalStr}</div>
+            </div>
+        </div>`;
+
+    const content = document.getElementById('rekapPDFContent');
+    content.innerHTML = html;
+
+    const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `Rekap_Nilai_Energi_Palu_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.pdf`,
+        image: { type: 'jpeg', quality: 0.95 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', windowWidth: 800, logging: false },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css','legacy'], avoid: ['tr', '.rekap-pdf-stat'] }
+    };
+
+    try {
+        const pdfBlob = await html2pdf().set(opt).from(content).outputPdf('blob');
+        await downloadFile(pdfBlob, opt.filename);
+    } catch (err) {
+        console.error(err);
+        alert('❌ Gagal membuat PDF: ' + (err.message || err));
+    } finally {
+        content.innerHTML = '';
+    }
+}
+
+async function exportRekapJSON() {
+    const db = loadSiswaDB();
+    const dataStr = JSON.stringify(db, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const now = new Date();
+    const filename = `Rekap_Energi_Palu_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.json`;
+    await downloadFile(blob, filename);
+}
+
+function imporRekapJSON() {
+    document.getElementById('fileImporJSON').click();
+}
+
+function handleImporJSON(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (typeof data !== 'object') throw new Error('Format tidak valid');
+            const db = loadSiswaDB();
+            const merged = { ...db, ...data };
+            saveSiswaDB(merged);
+            alert(`✅ Berhasil mengimpor ${Object.keys(data).length} data siswa.`);
+            muatRekap();
+            muatDataGuru();
+        } catch (err) {
+            alert('❌ Gagal impor: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
+
+function hapusSemuaData() {
+    if (!confirm('⚠️ PERINGATAN: Semua data siswa akan dihapus permanen. Lanjutkan?')) return;
+    if (!confirm('Konfirmasi sekali lagi: HAPUS SEMUA DATA?')) return;
+    SafeStorage.remove(SISWA_DB_KEY);
+    SafeStorage.remove(STORAGE_KEY);
+    SafeStorage.remove(SESSION_KEY);
+    state = {
+        kelompok: { nama: '', kelas: '', anggota: [] },
+        lkpd: {}, aktivitas1: {}, aktivitas2: {},
+        refleksi: { mood: null, jawaban: {} },
+        kuisDraft: {}, waktuMulai: null
+    };
+    sessionSiswa = null;
+    alert('🗑️ Semua data berhasil dihapus.');
+    location.reload();
+}
+
+/* =========================================================
+   INISIALISASI
+   ========================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        loadState();
+        loadSession();
+        renderAktivitas1();
+        renderAktivitas2();
+        renderAnggota();
+        restoreLKPD();
+        setTanggalHariIni();
+        startTimer();
+        updateUserBadge();
+        updateTTDKetua();
+
+        const elNama = document.getElementById('inputKelompok');
+        const elKelas = document.getElementById('inputKelas');
+        if (elNama && state.kelompok.nama) elNama.value = state.kelompok.nama;
+        if (elKelas && state.kelompok.kelas) elKelas.value = state.kelompok.kelas;
+
+        if (sessionSiswa && !sessionSiswa.submitted) restoreKuisDraft();
+
+        if (sessionSiswa?.submitted) {
+            for (let i = 1; i <= 10; i++) {
+                const name = 'k' + i;
+                const val = sessionSiswa.jawaban?.[name];
+                if (!val) continue;
+                document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                    if (r.value === val) {
+                        r.checked = true;
+                        r.closest('.option')?.classList.add('selected');
+                    }
+                });
+            }
+        }
+
+        // Auto-expand after layout settles (iOS needs slight delay)
+        setTimeout(() => {
+            document.querySelectorAll('textarea').forEach(autoExpand);
+        }, 100);
+
+        const pdfTanggal = document.getElementById('pdfTanggal');
+        if (pdfTanggal) {
+            const d = new Date();
+            pdfTanggal.textContent = d.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeSidebar();
+        });
+
+        // Warn if localStorage unavailable
+        if (!SafeStorage.isAvailable()) {
+            console.warn('⚠️ localStorage tidak tersedia. Data tidak akan tersimpan otomatis.');
+        }
+
+        console.log('✅ LKPD Energi Terbarukan Kota Palu siap digunakan.');
+    } catch (err) {
+        console.error('Gagal inisialisasi:', err);
+    }
+});
+
+// Global error handler
+window.addEventListener('error', e => {
+    console.error('Global error:', e.error || e.message);
+});
+window.addEventListener('unhandledrejection', e => {
+    console.error('Unhandled promise rejection:', e.reason);
+});
+</script>
+</body>
+</html>
